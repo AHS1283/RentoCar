@@ -1,0 +1,692 @@
+/* =====================================================
+   ACCOUNT PAGE
+   Theme matched to Home.css — warm paper/ink palette,
+   true orange accent, Times New Roman.
+===================================================== */
+
+.account-page {
+  --ink: #17181c;
+  --ink-soft: #5c5e66;
+  --ink-faint: #97989f;
+
+  --paper: #fafaf6;
+  --paper-deep: #efeade;
+  --panel: #f4f1e8;
+  --cream: #ffffff;
+
+  --amber: #f4791e;
+  --amber-deep: #d9600a;
+  --amber-ink: #3d1e08;
+  --amber-wash: rgba(244, 121, 30, 0.14);
+
+  --line: rgba(20, 20, 20, 0.09);
+  --line-soft: rgba(20, 20, 20, 0.12);
+
+  min-height: calc(100vh - 72px);
+
+  padding: 16px;
+
+  background: var(--paper);
+
+  color: var(--ink);
+
+  font-family: "Times New Roman", Times, serif;
+}
+
+.account-container {
+  display: grid;
+
+  grid-template-columns:
+    388px 1fr;
+
+  gap: 14px;
+
+  max-width: 1545px;
+
+  margin: 0 auto;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.account-sidebar {
+  min-height: 650px;
+
+  padding: 30px 18px 0;
+
+  background: var(--cream);
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 4px;
+
+  box-shadow:
+    0 1px 4px rgba(20, 15, 5, 0.06);
+}
+
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+.account-profile {
+  padding: 15px 0 46px;
+
+  text-align: center;
+
+  border-bottom:
+    1px solid var(--line);
+}
+
+.account-avatar {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 90px;
+  height: 90px;
+
+  margin: 0 auto 8px;
+
+  border:
+    2px solid var(--line-soft);
+
+  border-radius: 50%;
+
+  background: var(--panel);
+
+  color: var(--amber-deep);
+
+  font-size: 39px;
+  font-weight: 300;
+}
+
+.account-profile h2 {
+  margin: 0;
+
+  color: var(--ink);
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.account-profile p {
+  margin: 5px 0 0;
+
+  color: var(--ink-soft);
+
+  font-size: 16px;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.account-status {
+  padding: 10px 0;
+
+  border-bottom:
+    1px solid var(--line);
+}
+
+.account-status-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-height: 42px;
+
+  color: var(--ink);
+
+  font-size: 16px;
+}
+
+.status-icon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 25px;
+  height: 25px;
+
+  border-radius: 50%;
+
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* kept semantic red/green — not brand colors */
+.account-status-item.error
+.status-icon {
+  border: 1px solid #e33;
+
+  color: #e33;
+}
+
+.account-status-item.success
+.status-icon {
+  border: 1px solid #19ad38;
+
+  color: #19ad38;
+}
+
+
+/* =====================================================
+   MENU ROW
+===================================================== */
+
+.account-menu-row {
+  display: grid;
+
+  grid-template-columns:
+    30px 1fr auto;
+
+  align-items: center;
+
+  min-height: 48px;
+
+  border-bottom:
+    1px solid var(--line);
+
+  color: var(--ink);
+
+  font-size: 16px;
+}
+
+.account-menu-icon {
+  font-size: 18px;
+}
+
+.account-menu-green {
+  color: var(--amber-deep);
+
+  font-size: 16px;
+}
+
+
+/* =====================================================
+   SIDEBAR NAV
+===================================================== */
+
+.account-sidebar-nav {
+  display: flex;
+
+  flex-direction: column;
+
+  margin-top: 2px;
+}
+
+.account-sidebar-nav a,
+.account-sidebar-nav button {
+  display: flex;
+
+  align-items: center;
+
+  width: 100%;
+  min-height: 54px;
+
+  padding: 0 40px;
+
+  border: 0;
+  border-bottom:
+    1px solid var(--line);
+
+  background: transparent;
+
+  color: var(--ink);
+
+  text-decoration: none;
+
+  text-align: left;
+
+  font-family: inherit;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.account-sidebar-nav a:hover,
+.account-sidebar-nav button:hover {
+  background: var(--panel);
+}
+
+.account-sidebar-nav a.active {
+  background: var(--amber-wash);
+
+  color: var(--amber-deep);
+
+  font-weight: 700;
+}
+
+.active-dot {
+  width: 8px;
+  height: 8px;
+
+  margin-right: 12px;
+
+  border-radius: 50%;
+
+  background: var(--amber);
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.account-content {
+  min-height: 650px;
+
+  background: var(--cream);
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 4px;
+
+  box-shadow:
+    0 1px 4px rgba(20, 15, 5, 0.06);
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.account-header {
+  min-height: 65px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-bottom:
+    1px solid var(--line);
+
+  color: var(--ink);
+
+  font-size: 25px;
+
+  font-weight: 400;
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.account-section {
+  padding: 28px;
+}
+
+.account-section h3 {
+  margin: 0;
+
+  color: var(--ink);
+
+  font-size: 20px;
+
+  font-weight: 400;
+}
+
+.account-divider {
+  width: 100%;
+
+  height: 1px;
+
+  margin-top: 8px;
+
+  background: var(--line-soft);
+}
+
+
+/* =====================================================
+   ACCOUNT FIELD
+===================================================== */
+
+.account-field-row {
+  display: grid;
+
+  grid-template-columns:
+    108px 200px;
+
+  align-items: center;
+
+  gap: 0;
+
+  margin-top: 12px;
+}
+
+.account-field-label {
+  color: var(--ink);
+
+  font-size: 16px;
+}
+
+.account-field-value input {
+  width: 200px;
+
+  height: 37px;
+
+  padding: 0 13px;
+
+  border:
+    1px solid var(--line-soft);
+
+  border-radius: 4px;
+
+  background: var(--panel);
+
+  color: var(--ink-soft);
+
+  outline: none;
+
+  font-family: inherit;
+
+  font-size: 16px;
+
+  transition: border-color 0.2s ease;
+}
+
+.account-field-value input:focus {
+  border-color: var(--amber-deep);
+}
+
+
+/* =====================================================
+   PERSONAL GRID
+===================================================== */
+
+.personal-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  column-gap: 80px;
+
+  row-gap: 28px;
+
+  margin-top: 15px;
+}
+
+.personal-field {
+  display: grid;
+
+  grid-template-columns:
+    105px 1fr;
+
+  align-items: center;
+
+  min-height: 42px;
+}
+
+.personal-field > span {
+  color: var(--ink);
+
+  font-size: 16px;
+}
+
+.personal-field > strong {
+  color: var(--ink);
+
+  font-size: 16px;
+
+  font-weight: 400;
+}
+
+.personal-field input {
+  width: 200px;
+
+  height: 37px;
+
+  padding: 0 13px;
+
+  border:
+    1px solid var(--line-soft);
+
+  border-radius: 4px;
+
+  background: var(--panel);
+
+  color: var(--ink-soft);
+
+  outline: none;
+
+  font-family: inherit;
+
+  font-size: 16px;
+
+  transition: border-color 0.2s ease;
+}
+
+.personal-field input:focus {
+  border-color: var(--amber-deep);
+}
+
+
+/* =====================================================
+   INFO CARD
+===================================================== */
+
+.account-info-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin:
+    0 28px 25px;
+
+  padding: 18px;
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 7px;
+
+  background: var(--amber-wash);
+}
+
+.account-info-icon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--amber);
+
+  color: #ffffff;
+
+  font-weight: 700;
+}
+
+.account-info-card strong {
+  color: var(--amber-ink);
+
+  font-size: 16px;
+}
+
+.account-info-card p {
+  margin: 4px 0 0;
+
+  color: var(--ink-soft);
+
+  font-size: 16px;
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.account-back-button {
+  display: inline-flex;
+
+  margin:
+    0 28px 30px;
+
+  padding: 11px 20px;
+
+  border-radius: 5px;
+
+  background: var(--amber);
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.account-back-button:hover {
+  background: var(--amber-deep);
+
+  transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  .account-container {
+    grid-template-columns:
+      300px 1fr;
+  }
+
+  .personal-grid {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 750px) {
+
+  .account-page {
+    padding: 10px;
+  }
+
+  .account-container {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+  .account-sidebar {
+    min-height: auto;
+
+    padding-top: 20px;
+  }
+
+  .account-profile {
+    padding-bottom: 25px;
+  }
+
+  .account-content {
+    min-height: auto;
+  }
+
+  .account-header {
+    min-height: 58px;
+
+    font-size: 20px;
+  }
+
+  .account-section {
+    padding: 20px 16px;
+  }
+
+  .account-field-row {
+    grid-template-columns: 1fr;
+
+    gap: 7px;
+  }
+
+  .account-field-value input {
+    width: 100%;
+  }
+
+  .personal-grid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .personal-field {
+    grid-template-columns:
+      85px 1fr;
+  }
+
+  .personal-field input {
+    width: 100%;
+  }
+
+  .account-info-card {
+    margin:
+      0 16px 20px;
+  }
+
+  .account-back-button {
+    margin-left: 16px;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 420px) {
+
+  .account-sidebar-nav a,
+  .account-sidebar-nav button {
+    padding-left: 25px;
+  }
+
+  .account-profile h2 {
+    font-size: 17px;
+  }
+
+  .account-header {
+    font-size: 18px;
+  }
+
+}

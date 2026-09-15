@@ -1,0 +1,320 @@
+/* =====================================================
+   CAR CARD — WHITE / AMBER LUXURY THEME
+
+   Font:
+   Times New Roman
+
+   Colors:
+   Ink   #16213A
+   Amber #FFB238
+   Teal  #1F7A5C
+   Base  #F1F3F5
+   Card  #FFFFFF
+===================================================== */
+
+.car-card {
+  --ink: #16213a;
+  --ink-soft: #4b5568;
+  --amber: #ffb238;
+  --amber-dark: #c9781a;
+  --teal: #1f7a5c;
+  --base: #f1f3f5;
+  --line: #e1e4e9;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  font-family: "Times New Roman", Times, serif;
+  color: var(--ink);
+
+  text-decoration: none;
+
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.car-card:hover {
+  border-color: var(--amber-dark);
+
+  box-shadow: 0 14px 30px rgba(22, 33, 58, 0.11);
+
+  transform: translateY(-3px);
+}
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.car-card-image {
+  position: relative;
+
+  aspect-ratio: 4 / 3;
+
+  height: auto;
+
+  overflow: hidden;
+
+  background: #e9ebee;
+}
+
+.car-card-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: transform 0.35s ease;
+}
+
+.car-card:hover .car-card-image img {
+  transform: scale(1.035);
+}
+
+/* =====================================================
+   BADGE
+===================================================== */
+
+.car-card-badge {
+  position: absolute;
+
+  top: 12px;
+  left: 12px;
+
+  background: var(--teal);
+
+  color: #ffffff;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  padding: 5px 11px;
+
+  border-radius: 999px;
+
+  box-shadow: 0 4px 10px rgba(31, 122, 92, 0.18);
+}
+
+/* =====================================================
+   CARD BODY
+===================================================== */
+
+.car-card-body {
+  padding: 18px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+/* =====================================================
+   TOP — NAME + RATING
+===================================================== */
+
+.car-card-top {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.car-card-top h4 {
+  margin: 0;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-weight: 700;
+
+  font-size: 21px;
+
+  line-height: 1.2;
+
+  color: var(--ink);
+}
+
+/* =====================================================
+   RATING
+===================================================== */
+
+.car-card-rating {
+  flex-shrink: 0;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  color: var(--teal);
+
+  white-space: nowrap;
+}
+
+/* =====================================================
+   META
+===================================================== */
+
+.car-card-meta {
+  margin: 0;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 16px;
+
+  line-height: 1.4;
+
+  color: var(--ink-soft);
+}
+
+/* =====================================================
+   BOTTOM
+===================================================== */
+
+.car-card-bottom {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 7px;
+
+  padding-top: 14px;
+
+  border-top: 1px solid var(--line);
+}
+
+/* =====================================================
+   PRICE
+===================================================== */
+
+.car-card-price {
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 23px;
+
+  font-weight: 700;
+
+  color: var(--amber-dark);
+}
+
+.car-card-unit {
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 16px;
+
+  color: var(--ink-soft);
+
+  margin-left: 4px;
+}
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.car-card-cta {
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  color: var(--ink);
+
+  transition: color 0.2s ease;
+}
+
+.car-card:hover .car-card-cta {
+  color: var(--teal);
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 640px) {
+  .car-card {
+    border-radius: 15px;
+  }
+
+  .car-card-body {
+    padding: 17px;
+  }
+
+  .car-card-top h4 {
+    font-size: 20px;
+  }
+
+  .car-card-rating {
+    font-size: 16px;
+  }
+
+  .car-card-meta {
+    font-size: 16px;
+  }
+
+  .car-card-price {
+    font-size: 22px;
+  }
+
+  .car-card-unit {
+    font-size: 16px;
+  }
+
+  .car-card-cta {
+    font-size: 16px;
+  }
+
+  .car-card-badge {
+    font-size: 16px;
+
+    padding: 5px 10px;
+
+    top: 10px;
+    left: 10px;
+  }
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+  .car-card-body {
+    padding: 15px;
+  }
+
+  .car-card-top h4 {
+    font-size: 19px;
+  }
+
+  .car-card-rating {
+    font-size: 16px;
+  }
+
+  .car-card-meta {
+    font-size: 16px;
+  }
+
+  .car-card-price {
+    font-size: 21px;
+  }
+
+  .car-card-cta {
+    font-size: 16px;
+  }
+}

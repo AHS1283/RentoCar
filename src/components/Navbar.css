@@ -1,0 +1,1404 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap");
+
+/* =========================================================
+   RENTOCAR NAVBAR
+   Theme tokens matched to the RentoCar logo — warm paper/
+   cream surfaces, near-black ink text, single logo-orange
+   accent, Work Sans.
+   Defined on both .navbar and .drawer since the drawer sits
+   outside the <header> in the DOM.
+========================================================= */
+
+.navbar,
+.drawer {
+  --ink: #17181c;
+  --ink-soft: #5c5e66;
+  --ink-faint: #97989f;
+
+  --paper: #fafaf6;
+  --paper-deep: #efeade;
+  --panel: #f4f1e8;
+  --cream: #ffffff;
+
+  --amber: #f4791e;
+  --amber-deep: #d9600a;
+  --amber-ink: #3d1e08;
+  --amber-wash: rgba(244, 121, 30, 0.14);
+  --amber-wash-soft: rgba(244, 121, 30, 0.08);
+
+  --line: rgba(20, 20, 20, 0.09);
+  --line-soft: rgba(20, 20, 20, 0.12);
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  width: 100%;
+  height: 78px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+
+  font-family:
+    "Work Sans",
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+.navbar-inner {
+  width: 100%;
+  height: 100%;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LEFT SIDE
+========================================================= */
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  min-width: 0;
+}
+
+
+/* =========================================================
+   HAMBURGER
+========================================================= */
+
+.hamburger-btn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  flex-shrink: 0;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.hamburger-btn:hover {
+  background: var(--amber-wash-soft);
+  color: var(--amber-deep);
+}
+
+.hamburger-btn:active {
+  transform: scale(0.94);
+}
+
+
+/* =========================================================
+   DESKTOP HAMBURGER
+========================================================= */
+
+@media (min-width: 851px) {
+  .navbar-logged-in .hamburger-btn {
+    display: flex;
+  }
+
+  .navbar-logged-out .hamburger-btn {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   MOBILE HAMBURGER
+========================================================= */
+
+@media (max-width: 850px) {
+  .hamburger-btn {
+    display: flex !important;
+  }
+}
+
+
+/* =========================================================
+   RENTOCAR IMAGE LOGO
+========================================================= */
+
+.navbar-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: auto;
+  height: 100%;
+
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.navbar-logo:hover {
+  transform: translateY(-1px);
+  opacity: 0.94;
+}
+
+
+/*
+   LARGE IMAGE LOGO
+
+   The logo itself already contains
+   the Rentocar branding.
+
+   No external text is added.
+*/
+
+.navbar-logo-image {
+  width: 90px;
+  height: 90px;
+
+  display: block;
+  flex-shrink: 0;
+
+  object-fit: contain;
+  object-position: center;
+
+  max-width: none;
+}
+
+
+/* =========================================================
+   DESKTOP NAVIGATION
+========================================================= */
+
+.navbar-right {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 34px;
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.navbar-nav-link,
+.navbar-nav-button {
+  position: relative;
+
+  min-height: 42px;
+  padding: 0;
+
+  display: inline-flex;
+  align-items: center;
+
+  border: none;
+  background: transparent;
+
+  color: var(--ink);
+
+  font-family:
+    "Work Sans",
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.navbar-nav-link::after,
+.navbar-nav-button::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 3px;
+
+  height: 2px;
+
+  border-radius: 5px;
+
+  background: var(--amber);
+
+  transform: scaleX(0);
+  transform-origin: center;
+
+  transition: transform 0.2s ease;
+}
+
+.navbar-nav-link:hover,
+.navbar-nav-button:hover {
+  color: var(--amber-deep);
+}
+
+.navbar-nav-link:hover::after,
+.navbar-nav-button:hover::after {
+  transform: scaleX(1);
+}
+
+
+/* =========================================================
+   GET APP
+========================================================= */
+
+.navbar-app-button {
+  min-height: 42px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  border: none;
+  background: transparent;
+
+  color: var(--ink);
+
+  font-family:
+    "Work Sans",
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition: color 0.2s ease;
+}
+
+.navbar-app-button:hover {
+  color: var(--amber-deep);
+}
+
+.navbar-app-button svg {
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+.navbar-login-btn {
+  min-width: 112px;
+  height: 52px;
+
+  padding: 0 28px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: var(--amber);
+  color: #ffffff;
+
+  font-family:
+    "Work Sans",
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.navbar-login-btn:hover {
+  background: var(--amber-deep);
+  color: #ffffff;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 7px 18px rgba(217, 96, 10, 0.28);
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.navbar-profile {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.profile-trigger {
+  min-height: 46px;
+
+  padding: 3px 9px 3px 4px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  border: 1px solid var(--line-soft);
+  border-radius: 25px;
+
+  background: var(--cream);
+  color: var(--ink);
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.profile-trigger:hover,
+.profile-trigger[aria-expanded="true"] {
+  border-color: rgba(244, 121, 30, 0.4);
+  background: var(--panel);
+
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+
+/* =========================================================
+   PROFILE AVATAR
+========================================================= */
+
+.profile-avatar,
+.dropdown-avatar,
+.drawer-user-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--amber-deep);
+  color: var(--cream);
+}
+
+.profile-avatar {
+  width: 36px;
+  height: 36px;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.profile-avatar.icon-avatar {
+  background: var(--amber-wash);
+  color: var(--amber-deep);
+}
+
+.dropdown-avatar {
+  width: 46px;
+  height: 46px;
+
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.dropdown-avatar.icon-avatar {
+  background: var(--amber-wash);
+  color: var(--amber-deep);
+}
+
+
+/* =========================================================
+   PROFILE NAME
+========================================================= */
+
+.profile-name {
+  max-width: 125px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   PROFILE CHEVRON
+========================================================= */
+
+.profile-chevron {
+  color: var(--ink-faint);
+
+  transition:
+    transform 0.2s ease;
+}
+
+.profile-chevron.open {
+  transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   PROFILE DROPDOWN
+========================================================= */
+
+.profile-dropdown {
+  position: absolute;
+
+  top: calc(100% + 10px);
+  right: 0;
+
+  width: 290px;
+
+  overflow: hidden;
+
+  background: var(--cream);
+
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.14);
+
+  animation: dropdownIn 0.18s ease both;
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   DROPDOWN HEADER
+========================================================= */
+
+.profile-dropdown-header {
+  padding: 17px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  background: var(--panel);
+
+  border-bottom: 1px solid var(--line);
+}
+
+.dropdown-user-info {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.dropdown-user-info strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: var(--ink);
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.dropdown-user-info span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: var(--ink-faint);
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   DROPDOWN MENU
+========================================================= */
+
+.profile-dropdown-menu {
+  padding: 8px;
+}
+
+.profile-dropdown-menu a {
+  min-height: 46px;
+
+  padding: 0 12px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  border-radius: 8px;
+
+  color: var(--ink);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.profile-dropdown-menu a svg {
+  color: var(--ink-soft);
+  flex-shrink: 0;
+}
+
+.profile-dropdown-menu a:hover {
+  background: var(--amber-wash-soft);
+  color: var(--amber-deep);
+}
+
+.profile-dropdown-menu a:hover svg {
+  color: var(--amber-deep);
+}
+
+
+/* =========================================================
+   DROPDOWN FOOTER
+   (logout stays red — semantic/destructive, not brand)
+========================================================= */
+
+.profile-dropdown-footer {
+  padding: 8px;
+
+  border-top: 1px solid var(--line);
+}
+
+.profile-dropdown-footer button {
+  width: 100%;
+
+  min-height: 46px;
+
+  padding: 0 12px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #d13c3c;
+
+  font-family: inherit;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+.profile-dropdown-footer button:hover {
+  background: #fff2f2;
+}
+
+
+/* =========================================================
+   DRAWER OVERLAY
+========================================================= */
+
+.drawer-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 2100;
+
+  background: rgba(0, 0, 0, 0.52);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.drawer-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   LEFT DRAWER
+========================================================= */
+
+.drawer {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  z-index: 2200;
+
+  width: 410px;
+  max-width: 88vw;
+
+  overflow-y: auto;
+
+  background: var(--cream);
+
+  font-family:
+    "Work Sans",
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  box-shadow:
+    8px 0 30px rgba(0, 0, 0, 0.20);
+
+  transform: translateX(-105%);
+
+  visibility: hidden;
+
+  transition:
+    transform 0.30s cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    ),
+    visibility 0.30s ease;
+}
+
+.drawer.open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+
+/* =========================================================
+   DRAWER USER AREA
+========================================================= */
+
+.drawer-user-area {
+  width: 100%;
+
+  min-height: 88px;
+
+  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
+
+  background: var(--panel);
+
+  border-bottom: 1px solid var(--line);
+
+  box-sizing: border-box;
+}
+
+.drawer-account-header {
+  gap: 14px;
+
+  color: var(--ink);
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.drawer-account-header:hover {
+  background: var(--amber-wash-soft);
+}
+
+
+/* =========================================================
+   DRAWER USER AVATAR
+========================================================= */
+
+.drawer-user-icon {
+  width: 46px;
+  height: 46px;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.drawer-user-icon.icon-avatar {
+  background: var(--amber-wash);
+  color: var(--amber-deep);
+}
+
+
+/* =========================================================
+   DRAWER USER INFO
+========================================================= */
+
+.drawer-user-info {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.drawer-user-info strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: var(--ink);
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.drawer-user-info span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: var(--ink-faint);
+
+  font-size: 12px;
+}
+
+.drawer-user-arrow {
+  color: var(--ink-faint);
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   DRAWER LOGIN
+========================================================= */
+
+.drawer-login {
+  width: 100%;
+
+  min-height: 70px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  border: none;
+
+  background: transparent;
+
+  color: var(--ink);
+
+  font-family: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.drawer-login-icon {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid var(--line-soft);
+  border-radius: 50%;
+
+  background: var(--cream);
+
+  color: var(--amber-deep);
+}
+
+.drawer-login-text {
+  flex: 1;
+
+  color: var(--ink);
+
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.drawer-arrow {
+  margin-left: auto;
+
+  color: var(--ink-faint);
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   DRAWER MAIN MENU
+========================================================= */
+
+.drawer-main-menu {
+  padding: 0 18px;
+}
+
+
+/* =========================================================
+   DRAWER MAIN LINK
+========================================================= */
+
+.drawer-main-link {
+  width: 100%;
+
+  min-height: 60px;
+
+  padding: 0 6px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  border: none;
+
+  background: var(--cream);
+
+  color: var(--ink);
+
+  font-family: inherit;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    padding-left 0.2s ease;
+}
+
+.drawer-main-link:hover {
+  color: var(--amber-deep);
+
+  background: var(--amber-wash-soft);
+
+  padding-left: 11px;
+}
+
+.drawer-button {
+  appearance: none;
+}
+
+
+/* =========================================================
+   LOGGED OUT DIVIDERS
+========================================================= */
+
+.drawer-main-menu--bordered .drawer-main-link {
+  border-bottom: 1px solid var(--line);
+}
+
+.drawer-main-menu--bordered
+.drawer-main-link:last-child {
+  border-bottom: none;
+}
+
+
+/* =========================================================
+   DRAWER ICON
+========================================================= */
+
+.drawer-main-icon {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: var(--ink-soft);
+}
+
+.drawer-main-icon svg {
+  width: 20px;
+  height: 20px;
+
+  stroke-width: 1.9;
+}
+
+.drawer-main-link:hover
+.drawer-main-icon {
+  color: var(--amber-deep);
+}
+
+
+/* =========================================================
+   HOST ICON
+========================================================= */
+
+.host-icon {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  background: var(--amber-deep);
+
+  color: var(--cream) !important;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   CREDITS
+========================================================= */
+
+.drawer-credits-row {
+  justify-content: flex-start;
+}
+
+.drawer-credits-value {
+  margin-left: auto;
+
+  color: var(--ink-soft);
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.drawer-divider {
+  height: 8px;
+
+  background: var(--paper-deep);
+
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+
+/* =========================================================
+   LOGOUT
+   (stays red on hover — semantic/destructive, not brand)
+========================================================= */
+
+.drawer-logout-row {
+  color: var(--ink);
+}
+
+.drawer-logout-row:hover {
+  color: #d13c3c;
+  background: #fff2f2;
+}
+
+.drawer-logout-row:hover
+.drawer-main-icon {
+  color: #d13c3c;
+}
+
+
+/* =========================================================
+   INFO MENU
+========================================================= */
+
+.drawer-info-menu {
+  padding: 10px 18px 20px;
+
+  border-top: 1px solid var(--line);
+}
+
+.drawer-info-link {
+  min-height: 52px;
+
+  padding: 0 6px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  color: var(--ink);
+
+  font-size: 15px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    padding-left 0.2s ease;
+}
+
+.drawer-info-link svg {
+  width: 19px;
+
+  flex-shrink: 0;
+
+  color: var(--ink-soft);
+}
+
+.drawer-info-link:hover {
+  color: var(--amber-deep);
+
+  padding-left: 11px;
+}
+
+.drawer-info-link:hover svg {
+  color: var(--amber-deep);
+}
+
+
+/* =========================================================
+   BODY LOCK
+========================================================= */
+
+body.navbar-drawer-open {
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1200px) {
+
+  .navbar {
+    height: 82px;
+  }
+
+  .navbar-inner {
+    padding-left: 42px;
+    padding-right: 42px;
+  }
+
+  .navbar-left {
+    gap: 18px;
+  }
+
+  .navbar-logo-image {
+    width: 94px;
+    height: 94px;
+  }
+
+  .navbar-right {
+    gap: 36px;
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 1101px) and (max-width: 1199px) {
+
+  .navbar {
+    height: 80px;
+  }
+
+  .navbar-logo-image {
+    width: 88px;
+    height: 88px;
+  }
+
+  .navbar-right {
+    gap: 30px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) and (min-width: 851px) {
+
+  .navbar {
+    height: 76px;
+  }
+
+  .navbar-inner {
+    padding: 0 25px;
+  }
+
+  .navbar-left {
+    gap: 13px;
+  }
+
+  .navbar-logo-image {
+    width: 78px;
+    height: 78px;
+  }
+
+  .navbar-right {
+    gap: 19px;
+  }
+
+  .navbar-nav-link,
+  .navbar-nav-button,
+  .navbar-app-button {
+    font-size: 13px;
+  }
+
+  .navbar-login-btn {
+    min-width: 92px;
+
+    height: 47px;
+
+    padding: 0 20px;
+  }
+
+  .profile-name {
+    max-width: 90px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .navbar {
+    height: 70px;
+  }
+
+  .navbar-inner {
+    padding: 0 18px;
+  }
+
+  .navbar-left {
+    gap: 10px;
+  }
+
+  .navbar-logo-image {
+    width: 72px;
+    height: 72px;
+  }
+
+  .navbar-right {
+    display: none;
+  }
+
+  .drawer {
+    width: 400px;
+    max-width: 88vw;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .navbar {
+    height: 68px;
+  }
+
+  .navbar-inner {
+    padding: 0 14px;
+  }
+
+  .navbar-left {
+    gap: 8px;
+  }
+
+  .hamburger-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navbar-logo-image {
+    width: 68px;
+    height: 68px;
+  }
+
+  .drawer {
+    width: 360px;
+    max-width: 90vw;
+  }
+
+  .drawer-user-area {
+    min-height: 78px;
+
+    padding: 0 17px;
+  }
+
+  .drawer-main-menu {
+    padding: 0 15px;
+  }
+
+  .drawer-main-link {
+    min-height: 57px;
+
+    font-size: 15px;
+
+    gap: 14px;
+  }
+
+  .drawer-info-menu {
+    padding: 8px 15px 16px;
+  }
+
+  .drawer-info-link {
+    min-height: 50px;
+
+    font-size: 15px;
+  }
+
+  .drawer-user-icon {
+    width: 43px;
+    height: 43px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .navbar {
+    height: 66px;
+  }
+
+  .navbar-logo-image {
+    width: 63px;
+    height: 63px;
+  }
+
+  .navbar-left {
+    gap: 7px;
+  }
+
+  .drawer {
+    width: 92vw;
+  }
+
+  .drawer-main-link {
+    font-size: 14px;
+  }
+
+  .drawer-user-info strong {
+    font-size: 15px;
+  }
+}
+
+
+/* =========================================================
+   EXTRA SMALL DEVICES
+========================================================= */
+
+@media (max-width: 340px) {
+
+  .navbar-inner {
+    padding: 0 10px;
+  }
+
+  .hamburger-btn {
+    width: 37px;
+    height: 37px;
+  }
+
+  .navbar-logo-image {
+    width: 59px;
+    height: 59px;
+  }
+
+  .navbar-left {
+    gap: 5px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .navbar *,
+  .navbar *::before,
+  .navbar *::after,
+  .drawer *,
+  .drawer *::before,
+  .drawer *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

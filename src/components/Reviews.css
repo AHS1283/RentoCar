@@ -1,0 +1,615 @@
+/* =========================================
+   RENTOCAR REVIEWS SECTION
+   Theme: matched to the RentoCar logo — the
+   logo's true orange accent + near-black ink
+   Font: Times New Roman
+========================================= */
+
+.reviews-section {
+  --ink: #17181c;
+  --ink-soft: #5c5e66;
+  --ink-faint: #97989f;
+  --paper: #fafaf6;
+  --paper-deep: #efeade;
+  --panel: #f4f1e8;
+  --cream: #ffffff;
+  --amber: #f4791e;
+  --amber-deep: #d9600a;
+  --amber-ink: #3d1e08;
+  --line: rgba(20, 20, 20, 0.09);
+  --line-soft: rgba(20, 20, 20, 0.12);
+
+  width: 100%;
+  padding: 90px 24px;
+  background: var(--paper);
+  font-family: "Times New Roman", Times, serif;
+  box-sizing: border-box;
+}
+
+.reviews-section *,
+.reviews-section *::before,
+.reviews-section *::after {
+  box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.reviews-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+.reviews-heading-content {
+  max-width: 680px;
+}
+
+.reviews-small-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 14px;
+
+  font-size: 16px;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.3px;
+  color: var(--amber-deep);
+}
+
+.reviews-small-title::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+
+.reviews-heading-content h2 {
+  margin: 0;
+
+  font-family: "Times New Roman", Times, serif;
+  font-size: 48px;
+  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -1px;
+  color: var(--ink);
+}
+
+.reviews-heading-content h2 span {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--amber-deep);
+}
+
+.reviews-heading-content p {
+  max-width: 570px;
+  margin: 20px 0 0;
+
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+
+/* =========================================
+   RATING SUMMARY
+========================================= */
+
+.reviews-summary {
+  min-width: 250px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 24px;
+
+  border: 1px solid var(--line);
+  border-radius: 18px;
+
+  background: var(--panel);
+}
+
+.rating-number {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 46px;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.reviews-summary > p {
+  margin: 8px 0 18px;
+
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.review-stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 10px;
+}
+
+.star {
+  font-size: 20px;
+  color: var(--line-soft);
+}
+
+.star.active {
+  color: var(--amber);
+}
+
+
+/* =========================================
+   GOOGLE REVIEW BUTTON
+========================================= */
+
+.google-review-button {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 13px 18px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: var(--amber);
+  color: #ffffff;
+
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.google-review-button:hover {
+  background: var(--amber-deep);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.google-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 23px;
+  height: 23px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.35);
+  color: var(--amber-ink);
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   REVIEWS GRID
+========================================= */
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+
+/* =========================================
+   REVIEW CARD
+========================================= */
+
+.review-card {
+  min-height: 270px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 28px;
+
+  border: 1px solid var(--line);
+  border-radius: 18px;
+
+  background: var(--cream);
+
+  box-shadow: 0 8px 30px rgba(30, 25, 10, 0.05);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-6px);
+
+  border-color: var(--amber);
+
+  box-shadow: 0 18px 45px rgba(30, 25, 10, 0.1);
+}
+
+
+/* =========================================
+   USER
+========================================= */
+
+.review-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.review-user {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.review-avatar {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--amber);
+  color: #ffffff;
+
+  font-family: "Times New Roman", Times, serif;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.review-user h3 {
+  margin: 0 0 3px;
+
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.review-user span {
+  font-size: 14px;
+  color: var(--ink-faint);
+}
+
+
+/* =========================================
+   GOOGLE BADGE
+========================================= */
+
+.google-badge {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--line);
+  border-radius: 50%;
+
+  background: var(--panel);
+  color: var(--amber-deep);
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   RATING ROW
+========================================= */
+
+.review-rating-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 22px;
+}
+
+.review-rating-row .review-stars {
+  margin-top: 0;
+}
+
+.review-rating-row .star {
+  font-size: 17px;
+}
+
+.review-date {
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+
+/* =========================================
+   REVIEW TEXT
+========================================= */
+
+.review-text {
+  flex: 1;
+
+  margin: 18px 0 20px;
+
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+
+/* =========================================
+   VERIFIED
+========================================= */
+
+.verified-review {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding-top: 15px;
+
+  border-top: 1px solid var(--line);
+
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.verified-icon {
+  width: 18px;
+  height: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--amber);
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   BOTTOM CTA
+========================================= */
+
+.reviews-bottom {
+  margin-top: 45px;
+
+  padding: 32px 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+
+  border-radius: 18px;
+  border-left: 4px solid var(--amber);
+
+  background: var(--ink);
+}
+
+.reviews-bottom h3 {
+  margin: 0 0 8px;
+
+  font-family: "Times New Roman", Times, serif;
+  font-size: 26px;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+}
+
+.reviews-bottom h3 .highlight-brand {
+  color: var(--amber);
+}
+
+.reviews-bottom p {
+  margin: 0;
+
+  font-size: 16px;
+  line-height: 1.55;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+
+/* =========================================
+   ALL REVIEWS BUTTON
+========================================= */
+
+.all-reviews-button {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 14px 20px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: var(--amber);
+  color: #ffffff;
+
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.all-reviews-button span {
+  font-size: 21px;
+  transition: transform 0.25s ease;
+}
+
+.all-reviews-button:hover {
+  background: var(--amber-deep);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.all-reviews-button:hover span {
+  transform: translateX(4px);
+}
+
+
+/* =========================================
+   FOCUS
+========================================= */
+
+.google-review-button:focus-visible,
+.all-reviews-button:focus-visible {
+  outline: 3px solid var(--amber-deep);
+  outline-offset: 3px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .reviews-section {
+    padding: 70px 20px;
+  }
+
+  .reviews-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .reviews-summary {
+    width: 100%;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .reviews-heading-content h2 {
+    font-size: 40px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+  .reviews-section {
+    padding: 55px 16px;
+  }
+
+  .reviews-heading-content h2 {
+    font-size: 34px;
+    letter-spacing: -0.5px;
+  }
+
+  .reviews-heading-content p {
+    font-size: 16px;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .review-card {
+    padding: 23px;
+  }
+
+  .reviews-bottom {
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 26px 24px;
+  }
+
+  .reviews-bottom h3 {
+    font-size: 22px;
+  }
+
+  .all-reviews-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+  .reviews-heading-content h2 {
+    font-size: 30px;
+  }
+
+  .reviews-summary {
+    padding: 20px;
+  }
+
+  .rating-number {
+    font-size: 40px;
+  }
+
+  .review-card {
+    padding: 20px;
+  }
+
+  .review-text {
+    font-size: 16px;
+  }
+}

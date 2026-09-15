@@ -1,0 +1,305 @@
+/* =====================================================
+   CARS PAGE — WHITE / AMBER LUXURY THEME
+   Restyled to match Home's design tokens.
+
+   Font:
+   Times New Roman
+
+   Colors:
+   Ink        #17181c
+   Amber      #f4791e
+   Amber deep #d9600a
+   Panel/Base #f4f1e8
+===================================================== */
+
+.cars-page {
+  --ink: #17181c;
+  --ink-soft: #5c5e66;
+  --ink-faint: #97989f;
+  --amber: #f4791e;
+  --amber-dark: #d9600a;
+  --base: #f4f1e8;
+  --line: rgba(20, 20, 20, 0.09);
+
+  font-family: "Times New Roman", Times, serif;
+  color: var(--ink);
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.cars-header {
+  margin-bottom: 28px;
+}
+
+.cars-header .eyebrow {
+  display: inline-block;
+  margin-bottom: 8px;
+
+  font-family: "Times New Roman", Times, serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  color: var(--amber-dark);
+}
+
+.cars-header h1 {
+  margin: 0;
+
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+
+  color: var(--ink);
+}
+
+/* =====================================================
+   FILTERS
+===================================================== */
+
+.cars-filters {
+  display: flex;
+  gap: 18px;
+
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  padding: 20px;
+
+  box-shadow: 0 10px 28px rgba(23, 24, 28, 0.07);
+
+  margin-bottom: 36px;
+}
+
+.cars-filters .field {
+  flex: 1;
+}
+
+.cars-filters .field label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-family: "Times New Roman", Times, serif;
+  font-size: 15px;
+  font-weight: 700;
+
+  color: var(--ink-soft);
+
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cars-filters .field select {
+  width: 100%;
+
+  border: 1px solid var(--line);
+  border-radius: 10px;
+
+  background: var(--base);
+
+  padding: 12px 14px;
+
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  font-weight: 600;
+
+  color: var(--ink);
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.cars-filters .field select:hover {
+  border-color: var(--amber-dark);
+  background: #ffffff;
+}
+
+.cars-filters .field select:focus-visible {
+  outline: 2px solid var(--amber-dark);
+  outline-offset: 2px;
+}
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.car-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 24px;
+}
+
+/* =====================================================
+   LOADING / EMPTY STATES
+===================================================== */
+
+.cars-loading,
+.cars-empty {
+  text-align: center;
+
+  padding: 70px 20px;
+
+  font-family: "Times New Roman", Times, serif;
+
+  color: var(--ink-soft);
+
+  font-size: 18px;
+}
+
+.cars-empty h3 {
+  margin: 0 0 10px;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-weight: 700;
+
+  color: var(--ink);
+
+  font-size: 25px;
+}
+
+.cars-empty p {
+  margin: 0;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 17px;
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+  .car-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cars-header h1 {
+    font-size: 40px;
+  }
+}
+
+/* =====================================================
+   TABLET / SMALL LAPTOP
+===================================================== */
+
+@media (max-width: 960px) {
+  .car-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cars-filters {
+    gap: 14px;
+  }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 640px) {
+  .cars-header {
+    margin-bottom: 22px;
+  }
+
+  .cars-header .eyebrow {
+    font-size: 14px;
+    margin-bottom: 7px;
+  }
+
+  .cars-header h1 {
+    font-size: 34px;
+    line-height: 1.15;
+  }
+
+  .cars-filters {
+    flex-direction: column;
+
+    gap: 16px;
+
+    padding: 18px;
+
+    border-radius: 14px;
+
+    margin-bottom: 28px;
+  }
+
+  .cars-filters .field label {
+    font-size: 14px;
+    margin-bottom: 7px;
+  }
+
+  .cars-filters .field select {
+    font-size: 16px;
+    padding: 12px 13px;
+  }
+
+  .car-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .cars-loading,
+  .cars-empty {
+    padding: 55px 15px;
+    font-size: 17px;
+  }
+
+  .cars-empty h3 {
+    font-size: 22px;
+  }
+
+  .cars-empty p {
+    font-size: 16px;
+  }
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+  .cars-header h1 {
+    font-size: 31px;
+  }
+
+  .cars-header .eyebrow {
+    font-size: 13px;
+  }
+
+  .cars-filters {
+    padding: 15px;
+  }
+
+  .cars-filters .field select {
+    font-size: 15px;
+  }
+}
+
+/* =====================================================
+   VERY SMALL DEVICES
+===================================================== */
+
+@media (max-width: 340px) {
+  .cars-header h1 {
+    font-size: 29px;
+  }
+
+  .cars-filters {
+    padding: 13px;
+  }
+}

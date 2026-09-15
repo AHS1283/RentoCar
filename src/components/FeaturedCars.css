@@ -1,0 +1,780 @@
+/* =====================================================
+   FEATURED CARS — matched to RENTOCAR home page theme
+   (crisp white/paper background, true orange accent,
+   near-black ink — same variables as Home.css)
+
+   Font:
+   Times New Roman
+
+   Colors (from Home.css):
+   Ink        #17181c
+   Ink soft   #5c5e66
+   Amber      #f4791e
+   Amber deep #d9600a
+   Paper      #fafaf6
+   Panel      #f4f1e8
+   Cream      #ffffff
+   Line       rgba(20,20,20,0.09)
+
+   Layout:
+   Horizontal snap-scroll
+===================================================== */
+
+.featured-cars {
+  --ink: #17181c;
+  --ink-soft: #5c5e66;
+  --ink-faint: #97989f;
+  --amber: #f4791e;
+  --amber-dark: #d9600a;
+  --accent-deep: #a8480a; /* replaces old teal accent, kept warm/on-theme */
+  --base: #f4f1e8;
+  --paper: #fafaf6;
+  --cream: #ffffff;
+  --line: rgba(20, 20, 20, 0.09);
+  --line-soft: rgba(20, 20, 20, 0.12);
+
+  padding: 60px 24px 70px;
+
+  background: var(--cream);
+
+  font-family: "Times New Roman", Times, serif;
+
+  color: var(--ink);
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.featured-cars-head {
+  max-width: 1200px;
+
+  margin: 0 auto 32px;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 18px;
+}
+
+.featured-cars-head h2 {
+  margin: 0 0 8px;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-weight: 700;
+
+  font-size: 38px;
+
+  line-height: 1.15;
+
+  color: var(--ink);
+
+  letter-spacing: -0.01em;
+}
+
+.featured-cars-head p {
+  margin: 0;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 18px;
+
+  line-height: 1.4;
+
+  color: var(--ink-soft);
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+/* =====================================================
+   BOTTOM CONTROLS (arrows + auto-swiper dots)
+===================================================== */
+
+.featured-cars-controls {
+  max-width: 1200px;
+
+  margin: 22px auto 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 14px;
+}
+
+.featured-cars-arrow {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  border: 1px solid var(--line);
+
+  background: var(--cream);
+
+  color: var(--ink);
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 25px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.featured-cars-arrow:hover {
+  background: var(--amber);
+
+  color: #ffffff;
+
+  border-color: var(--amber);
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 5px 12px rgba(30, 25, 10, 0.14);
+}
+
+.featured-cars-arrow:focus-visible,
+.featured-card:focus-visible,
+.featured-card-cta:focus-visible {
+  outline: 2px solid var(--amber-dark);
+
+  outline-offset: 3px;
+}
+
+/* =====================================================
+   AUTO-SWIPER DOTS
+===================================================== */
+
+.featured-cars-dots {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+}
+
+.featured-cars-dot {
+  width: 8px;
+  height: 8px;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: var(--line-soft);
+
+  cursor: pointer;
+
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
+}
+
+.featured-cars-dot-active {
+  width: 26px;
+
+  border-radius: 6px;
+
+  background: var(--amber);
+}
+
+/* =====================================================
+   HORIZONTAL CARD TRACK
+===================================================== */
+
+.featured-cars-track {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  gap: 22px;
+
+  overflow-x: auto;
+
+  scroll-snap-type: x proximity;
+
+  padding: 0 2px 12px;
+
+  scrollbar-width: none;
+}
+
+.featured-cars-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* =====================================================
+   FEATURED CARD
+===================================================== */
+
+.featured-card {
+  scroll-snap-align: start;
+
+  flex: 0 0 290px;
+
+  background: var(--cream);
+
+  border: 1px solid var(--line);
+
+  border-radius: 16px;
+
+  overflow: visible;
+
+  cursor: pointer;
+
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.featured-card:hover {
+  border-color: var(--amber-dark);
+
+  box-shadow: 0 14px 30px rgba(30, 25, 10, 0.12);
+
+  transform: translateY(-3px);
+}
+
+/* =====================================================
+   SKELETON
+===================================================== */
+
+.featured-card-skeleton {
+  height: 365px;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    90deg,
+    var(--base) 25%,
+    var(--paper) 37%,
+    var(--base) 63%
+  );
+
+  background-size: 400% 100%;
+
+  animation: featured-shimmer 1.4s ease infinite;
+
+  border: 1px solid var(--line);
+
+  cursor: default;
+}
+
+@keyframes featured-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* =====================================================
+   CARD MEDIA
+===================================================== */
+
+.featured-card-media {
+  position: relative;
+
+  aspect-ratio: 4 / 3;
+
+  background: var(--base);
+
+  /*
+    IMPORTANT:
+    overflow hidden hata diya hai.
+    Isse price tag bottom se cut nahi hoga.
+  */
+  overflow: visible;
+
+  border-radius: 15px 15px 0 0;
+}
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.featured-card-media img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  border-radius: 15px 15px 0 0;
+
+  transition: transform 0.35s ease;
+}
+
+.featured-card:hover .featured-card-media img {
+  transform: scale(1.035);
+}
+
+/* =====================================================
+   RATING BADGE
+===================================================== */
+
+.featured-card-rating {
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  z-index: 4;
+
+  background: var(--ink);
+
+  color: #ffffff;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  padding: 6px 10px;
+
+  border-radius: 999px;
+
+  white-space: nowrap;
+
+  box-shadow: 0 4px 10px rgba(23, 24, 28, 0.25);
+}
+
+/* =====================================================
+   PRICE TAG
+===================================================== */
+
+.featured-card-price {
+  position: absolute;
+
+  left: 13px;
+
+  /*
+    Keep it slightly below the image,
+    but fully visible.
+  */
+  bottom: -15px;
+
+  z-index: 10;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: var(--amber);
+
+  color: #ffffff;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-weight: 700;
+
+  font-size: 19px;
+
+  line-height: 1;
+
+  padding: 9px 13px;
+
+  border-radius: 10px;
+
+  white-space: nowrap;
+
+  box-shadow: 0 5px 12px rgba(217, 96, 10, 0.35);
+}
+
+.featured-card-price small {
+  font-family: "Times New Roman", Times, serif;
+
+  font-weight: 600;
+
+  font-size: 16px;
+
+  line-height: 1;
+
+  margin-left: 4px;
+}
+
+/* =====================================================
+   CARD BODY
+===================================================== */
+
+.featured-card-body {
+  position: relative;
+
+  z-index: 2;
+
+  padding: 28px 18px 18px;
+
+  background: var(--cream);
+
+  border-radius: 0 0 15px 15px;
+}
+
+/* =====================================================
+   CAR NAME
+===================================================== */
+
+.featured-card-body h3 {
+  margin: 0 0 8px;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 22px;
+
+  line-height: 1.2;
+
+  font-weight: 700;
+
+  color: var(--ink);
+}
+
+/* =====================================================
+   META
+===================================================== */
+
+.featured-card-meta {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px 11px;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 16px;
+
+  line-height: 1.35;
+
+  color: var(--ink-soft);
+
+  margin-bottom: 7px;
+}
+
+/* =====================================================
+   LOCATION
+===================================================== */
+
+.featured-card-location {
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 16px;
+
+  line-height: 1.4;
+
+  color: var(--ink-soft);
+
+  margin-bottom: 14px;
+}
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.featured-card-features {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-bottom: 18px;
+}
+
+.featured-card-features span {
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  line-height: 1;
+
+  color: var(--accent-deep);
+
+  background: rgba(244, 121, 30, 0.12);
+
+  padding: 6px 10px;
+
+  border-radius: 999px;
+}
+
+/* =====================================================
+   CTA BUTTON
+===================================================== */
+
+.featured-card-cta {
+  width: 100%;
+
+  padding: 12px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: var(--amber);
+
+  color: #ffffff;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-weight: 700;
+
+  font-size: 16px;
+
+  line-height: 1.2;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.featured-card-cta:hover {
+  background: var(--amber-dark);
+
+  color: #ffffff;
+
+  transform: translateY(-1px);
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 960px) {
+  .featured-cars {
+    padding: 55px 20px 65px;
+  }
+
+  .featured-cars-head h2 {
+    font-size: 35px;
+  }
+
+  .featured-cars-head p {
+    font-size: 17px;
+  }
+
+  .featured-card {
+    flex-basis: 280px;
+  }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 640px) {
+  .featured-cars {
+    padding: 45px 16px 55px;
+  }
+
+  .featured-cars-head {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 16px;
+
+    margin-bottom: 25px;
+  }
+
+  .featured-cars-head h2 {
+    font-size: 33px;
+
+    margin-bottom: 7px;
+  }
+
+  .featured-cars-head p {
+    font-size: 16px;
+  }
+
+  .featured-cars-controls {
+    margin-top: 18px;
+  }
+
+  .featured-cars-arrow {
+    width: 40px;
+    height: 40px;
+
+    font-size: 23px;
+  }
+
+  .featured-cars-track {
+    gap: 16px;
+
+    padding-bottom: 14px;
+  }
+
+  .featured-card {
+    flex-basis: 260px;
+
+    border-radius: 15px;
+  }
+
+  .featured-card-media {
+    border-radius: 14px 14px 0 0;
+  }
+
+  .featured-card-media img {
+    border-radius: 14px 14px 0 0;
+  }
+
+  .featured-card-price {
+    left: 11px;
+
+    bottom: -14px;
+
+    font-size: 18px;
+
+    padding: 8px 11px;
+  }
+
+  .featured-card-price small {
+    font-size: 16px;
+  }
+
+  .featured-card-body {
+    padding: 27px 16px 16px;
+  }
+
+  .featured-card-body h3 {
+    font-size: 20px;
+  }
+
+  .featured-card-meta {
+    font-size: 16px;
+  }
+
+  .featured-card-location {
+    font-size: 16px;
+  }
+
+  .featured-card-features span {
+    font-size: 16px;
+
+    padding: 5px 9px;
+  }
+
+  .featured-card-cta {
+    font-size: 16px;
+
+    padding: 11px;
+  }
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+  .featured-cars {
+    padding: 40px 14px 50px;
+  }
+
+  .featured-cars-head h2 {
+    font-size: 30px;
+  }
+
+  .featured-cars-head p {
+    font-size: 16px;
+  }
+
+  .featured-card {
+    flex-basis: 245px;
+  }
+
+  .featured-card-body h3 {
+    font-size: 19px;
+  }
+
+  .featured-card-price {
+    left: 10px;
+
+    bottom: -13px;
+
+    font-size: 17px;
+
+    padding: 8px 10px;
+  }
+
+  .featured-card-price small {
+    font-size: 16px;
+  }
+
+  .featured-card-rating {
+    font-size: 16px;
+
+    padding: 5px 9px;
+  }
+}
+
+/* =====================================================
+   VERY SMALL DEVICES
+===================================================== */
+
+@media (max-width: 340px) {
+  .featured-card {
+    flex-basis: 230px;
+  }
+
+  .featured-cars-head h2 {
+    font-size: 28px;
+  }
+
+  .featured-card-price {
+    font-size: 16px;
+
+    padding: 7px 9px;
+  }
+}
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .featured-card,
+  .featured-cars-arrow,
+  .featured-cars-dot,
+  .featured-card-media img,
+  .featured-card-cta {
+    transition: none;
+  }
+
+  .featured-card-skeleton {
+    animation: none;
+  }
+}

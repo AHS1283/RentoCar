@@ -1,0 +1,324 @@
+/* =========================================================
+   RENTOCAR MY BOOKINGS
+   Restyled to match Home's design tokens: ink #17181c for
+   text/headings, amber #f4791e for primary actions,
+   amber-deep #d9600a for eyebrows/accents (replacing teal).
+========================================================= */
+
+.bookings-page {
+  --ink: #17181c;
+  --ink-soft: #5c5e66;
+  --ink-faint: #97989f;
+  --amber: #f4791e;
+  --amber-dark: #d9600a;
+  --base: #f4f1e8;
+  --line: rgba(20, 20, 20, 0.09);
+
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 28px 24px 80px;
+  box-sizing: border-box;
+  color: var(--ink);
+  font-family: "Times New Roman", Times, serif;
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.bookings-page .eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--amber-dark);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.bookings-page h1 {
+  margin: 0 0 26px;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  color: var(--ink);
+}
+
+.bookings-loading {
+  color: var(--ink-faint);
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.bookings-empty.card {
+  padding: 45px 28px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+}
+
+.bookings-empty h3 {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.bookings-empty p {
+  margin: 0 0 20px;
+  color: var(--ink-faint);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   LOGIN BUTTON
+   Matches the amber CTA used by featured-card-cta and
+   panel-book-btn: amber background + ink text at rest,
+   amber-dark + white on hover.
+========================================================= */
+
+.bookings-login-btn {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 9px;
+  background: var(--amber);
+  color: var(--ink);
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 7px 20px rgba(217, 96, 10, 0.3);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.bookings-login-btn:hover {
+  background: var(--amber-dark);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(217, 96, 10, 0.35);
+}
+
+
+/* =========================================================
+   BOOKINGS LIST
+========================================================= */
+
+.bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.booking-item-noimg {
+  width: 110px;
+  height: 82px;
+  border-radius: 10px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--base);
+  color: var(--ink-faint);
+  font-size: 13px;
+}
+
+.booking-item.card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 17px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.booking-item.card:hover {
+  border-color: var(--amber-dark);
+  box-shadow: 0 10px 26px rgba(23, 24, 28, 0.08);
+}
+
+.booking-item img {
+  width: 110px;
+  height: 82px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex: 0 0 auto;
+  background: var(--base);
+}
+
+
+/* =========================================================
+   BOOKING INFO
+========================================================= */
+
+.booking-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.booking-item-info h4 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.booking-item-info p {
+  margin: 7px 0 0;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
+
+.booking-item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.booking-status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.booking-status.confirmed {
+  background: rgba(217, 96, 10, 0.1);
+  color: var(--amber-dark);
+}
+
+.booking-status.completed {
+  background: #eef2f8;
+  color: #2a5db0;
+}
+
+.booking-status.cancelled {
+  background: #fdecec;
+  color: #c33d3d;
+}
+
+.booking-item-price {
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .bookings-page {
+    padding: 20px 15px 60px;
+  }
+
+  .bookings-page .eyebrow {
+    font-size: 13px;
+  }
+
+  .bookings-page h1 {
+    font-size: 30px;
+    margin-bottom: 22px;
+  }
+
+  .booking-item.card {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 15px;
+  }
+
+  .booking-item img {
+    width: 100%;
+    height: 170px;
+  }
+
+  .booking-item-noimg {
+    width: 100%;
+    height: 170px;
+  }
+
+  .booking-item-info h4 {
+    font-size: 19px;
+  }
+
+  .booking-item-info p {
+    font-size: 16px;
+  }
+
+  .booking-item-right {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .booking-status {
+    font-size: 13px;
+  }
+
+  .booking-item-price {
+    font-size: 19px;
+  }
+
+  .bookings-empty h3 {
+    font-size: 21px;
+  }
+
+  .bookings-empty p {
+    font-size: 16px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .bookings-page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .bookings-page h1 {
+    font-size: 28px;
+  }
+
+  .booking-item-info h4 {
+    font-size: 18px;
+  }
+
+  .booking-item-info p {
+    font-size: 16px;
+  }
+
+  .booking-item-price {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,59 @@
+.auth-page {
+  --ink: #17181c;
+  --ink-soft: #5c5e66;
+  --ink-faint: #97989f;
+  --paper: #fafaf6;
+  --panel: #f4f1e8;
+  --cream: #ffffff;
+  --amber: #f4791e;
+  --amber-deep: #d9600a;
+  --amber-ink: #3d1e08;
+  --line: rgba(20, 20, 20, 0.09);
+
+  display: flex;
+  justify-content: center;
+  padding-top: 48px;
+  font-size: 16px;
+  font-family: "Times New Roman", Times, serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 32px;
+  font-size: 1rem;
+  font-family: "Times New Roman", Times, serif;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.auth-card h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 700;
+  font-size: 26px;
+  margin: 8px 0 24px;
+  color: var(--ink);
+}
+
+.auth-card .field {
+  margin-bottom: 16px;
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 18px;
+  font-size: .95rem;
+  color: var(--ink-soft);
+}
+
+.auth-switch a {
+  color: var(--amber-deep);
+  font-weight: 600;
+}
+
+.auth-switch a:hover {
+  color: var(--amber);
+}

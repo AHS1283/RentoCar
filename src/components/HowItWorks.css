@@ -1,0 +1,637 @@
+/* =========================================
+   SECTION
+   Matches Home's design tokens: ink #17181c,
+   amber #f4791e / amber-deep #d9600a, paper/panel
+   tones, "Times New Roman" throughout (no Google
+   Fonts import needed).
+========================================= */
+
+.gm-section {
+  --ink: #17181c;
+  --ink-soft: #5c5e66;
+  --ink-faint: #97989f;
+  --paper: #fafaf6;
+  --paper-deep: #efeade;
+  --panel: #f4f1e8;
+  --cream: #ffffff;
+  --amber: #f4791e;
+  --amber-deep: #d9600a;
+  --amber-ink: #3d1e08;
+  --line: rgba(20, 20, 20, 0.09);
+
+  position: relative;
+  width: 100%;
+  padding: 100px 20px;
+
+  background: var(--panel);
+  color: var(--ink);
+
+  font-family: "Times New Roman", Times, serif;
+  overflow: hidden;
+}
+
+.gm-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.gm-header {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  margin-bottom: 24px;
+}
+
+.gm-visible .gm-header {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gm-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 9px 20px;
+  border: 2px solid var(--amber-deep);
+  border-radius: 100px;
+  background: rgba(244, 121, 30, 0.1);
+  color: var(--amber-deep);
+
+  font-size: 16px;
+  font-weight: 700;
+
+  margin-bottom: 22px;
+}
+
+.gm-label-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--amber-deep);
+}
+
+.gm-heading {
+  margin: 0;
+  max-width: 760px;
+
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 700;
+  font-size: clamp(36px, 4.8vw, 58px);
+  line-height: 1.14;
+  letter-spacing: -1.6px;
+  color: var(--ink);
+}
+
+.gm-heading span {
+  font-style: italic;
+  color: var(--amber-deep);
+}
+
+/* =========================================
+   LEVEL MAP
+========================================= */
+
+.gm-map {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  margin-top: 55px;
+
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
+}
+
+.gm-visible .gm-map {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gm-map-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.gm-road-base {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-dasharray: 2 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.gm-road-progress {
+  fill: none;
+  stroke: var(--amber-deep);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  vector-effect: non-scaling-stroke;
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.gm-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.gm-node-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  border: 3px solid var(--ink);
+  background: var(--cream);
+  color: var(--ink-faint);
+
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gm-node-label {
+  max-width: 130px;
+
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.gm-node-done .gm-node-icon {
+  background: var(--ink);
+  color: var(--amber);
+  border-color: var(--ink);
+}
+
+.gm-node-active .gm-node-icon {
+  background: var(--amber-deep);
+  color: #ffffff;
+  border-color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink), 0 0 0 5px rgba(244, 121, 30, 0.28);
+  animation: nodePulse 1.4s ease infinite;
+}
+
+.gm-node-active .gm-node-label {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+@keyframes nodePulse {
+  0%, 100% { box-shadow: 3px 3px 0 var(--ink), 0 0 0 5px rgba(244, 121, 30, 0.28); }
+  50% { box-shadow: 3px 3px 0 var(--ink), 0 0 0 9px rgba(244, 121, 30, 0.12); }
+}
+
+.gm-car {
+  position: absolute;
+  transform: translate(-50%, -130%);
+
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: var(--amber);
+  border: 3px solid var(--ink);
+  color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+
+  z-index: 3;
+
+  transition: left 0.6s cubic-bezier(0.34, 1.4, 0.64, 1),
+    top 0.6s cubic-bezier(0.34, 1.4, 0.64, 1);
+
+  animation: carBob 0.6s ease infinite alternate;
+}
+
+@keyframes carBob {
+  from { transform: translate(-50%, -130%) rotate(-4deg); }
+  to { transform: translate(-50%, -145%) rotate(4deg); }
+}
+
+.gm-car-dust {
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  width: 8px;
+  height: 2px;
+  background: rgba(23, 24, 28, 0.3);
+  border-radius: 2px;
+  animation: dustTrail 0.6s ease infinite;
+}
+
+@keyframes dustTrail {
+  0% { opacity: 0.6; transform: translateX(0) translateY(-50%); }
+  100% { opacity: 0; transform: translateX(-12px) translateY(-50%); }
+}
+
+/* =========================================
+   REWARD TICKET
+========================================= */
+
+.gm-ticket {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1.15fr;
+
+  margin-top: 40px;
+
+  border: 3px solid var(--ink);
+  border-radius: 26px;
+  background: var(--cream);
+  box-shadow: 9px 9px 0 var(--ink);
+  overflow: hidden;
+
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+}
+
+.gm-visible .gm-ticket {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gm-ticket-left {
+  padding: 44px 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.gm-ticket-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #ffffff 0%, var(--panel) 60%, #e9e3d4 100%);
+  color: var(--amber-deep);
+
+  box-shadow: 4px 4px 0 var(--ink), inset 0 0 0 3px #ffffff;
+  margin-bottom: 22px;
+
+  animation: ticketIconPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes ticketIconPop {
+  0% { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+  60% { transform: scale(1.1) rotate(4deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.gm-ticket-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 2px solid var(--ink);
+  border-radius: 100px;
+  background: var(--amber);
+  color: var(--amber-ink);
+
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.gm-ticket-left h3 {
+  margin: 0 0 14px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 31px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.gm-ticket-left p {
+  margin: 0 0 26px;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.gm-ticket-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  background: var(--ink);
+  color: #ffffff;
+
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+
+  box-shadow: 4px 4px 0 var(--amber-deep);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.gm-ticket-cta:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--amber-deep);
+}
+
+.gm-ticket-cta:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--amber-deep);
+}
+
+.gm-ticket-divider {
+  position: relative;
+  width: 3px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--ink) 0 10px,
+    transparent 10px 20px
+  );
+}
+
+.gm-ticket-divider::before,
+.gm-ticket-divider::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  background: var(--cream);
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.gm-ticket-divider::before { top: -12px; }
+.gm-ticket-divider::after { bottom: -12px; }
+
+/* =========================================
+   CAR CARD SHOWCASE (stacked deck, auto-rotates)
+========================================= */
+
+.gm-showcase {
+  position: relative;
+  min-height: 360px;
+  padding: 40px 32px 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--cream);
+}
+
+.gm-showcase-card {
+  position: absolute;
+  width: 80%;
+  aspect-ratio: 4 / 3;
+
+  border: 3px solid var(--ink);
+  border-radius: 20px;
+  overflow: hidden;
+
+  padding: 0;
+  background: var(--cream);
+  cursor: pointer;
+
+  box-shadow: 7px 7px 0 var(--ink);
+
+  transition: transform 0.5s cubic-bezier(0.34, 1.3, 0.64, 1),
+    opacity 0.4s ease, filter 0.4s ease;
+}
+
+.gm-showcase-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gm-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(200deg, rgba(23, 24, 28, 0.6) 0%, rgba(23, 24, 28, 0) 45%);
+  pointer-events: none;
+}
+
+.gm-card-name {
+  position: absolute;
+  left: 18px;
+  top: 15px;
+  z-index: 2;
+
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.gm-card-type {
+  position: absolute;
+  left: 18px;
+  top: 41px;
+  z-index: 2;
+
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.gm-card-specs {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 15px;
+  z-index: 2;
+
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.gm-spec-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 7px 12px;
+  border-radius: 8px;
+  background: rgba(23, 24, 28, 0.75);
+  backdrop-filter: blur(2px);
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* deck depth positions */
+.gm-depth-0 {
+  transform: translate(0, 0) rotate(0deg) scale(1);
+  z-index: 4;
+  opacity: 1;
+}
+
+.gm-depth-1 {
+  transform: translate(32px, 18px) rotate(8deg) scale(0.93);
+  z-index: 3;
+  opacity: 0.85;
+  filter: brightness(0.9);
+}
+
+.gm-depth-2 {
+  transform: translate(-28px, 30px) rotate(-10deg) scale(0.88);
+  z-index: 2;
+  opacity: 0.7;
+  filter: brightness(0.8);
+}
+
+.gm-depth-3 {
+  transform: translate(11px, 42px) rotate(5deg) scale(0.83);
+  z-index: 1;
+  opacity: 0.55;
+  filter: brightness(0.7);
+}
+
+.gm-depth-1:hover,
+.gm-depth-2:hover,
+.gm-depth-3:hover {
+  filter: brightness(1);
+  opacity: 0.95;
+}
+
+/* =========================================
+   SHOWCASE DOTS (auto-rotation indicator)
+========================================= */
+
+.gm-showcase-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  transform: translateX(-50%);
+}
+
+.gm-showcase-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--cream);
+  cursor: pointer;
+
+  transition: width 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.gm-showcase-dot-active {
+  width: 26px;
+  border-radius: 6px;
+  background: var(--amber);
+  border-color: var(--ink);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .gm-section { padding: 78px 18px; }
+
+  .gm-map { height: 290px; }
+
+  .gm-ticket {
+    grid-template-columns: 1fr;
+  }
+
+  .gm-ticket-divider {
+    width: auto;
+    height: 3px;
+    background: repeating-linear-gradient(to right, var(--ink) 0 10px, transparent 10px 20px);
+  }
+
+  .gm-ticket-divider::before,
+  .gm-ticket-divider::after {
+    top: 50%;
+    left: auto;
+    transform: translateY(-50%);
+  }
+
+  .gm-ticket-divider::before { left: -12px; }
+  .gm-ticket-divider::after { left: auto; right: -12px; }
+
+  .gm-showcase { min-height: 310px; padding: 32px 32px 58px; }
+  .gm-showcase-card { width: 66%; }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 560px) {
+  .gm-section { padding: 60px 14px; }
+
+  .gm-heading { font-size: 30px; letter-spacing: -1px; }
+
+  .gm-map { height: 330px; }
+
+  .gm-node-icon { width: 42px; height: 42px; }
+  .gm-node-label { font-size: 16px; max-width: 92px; }
+
+  .gm-car { width: 34px; height: 34px; }
+
+  .gm-ticket-left { padding: 28px 22px; }
+  .gm-ticket-left h3 { font-size: 23px; }
+  .gm-ticket-left p { font-size: 16px; }
+
+  .gm-showcase { min-height: 260px; padding: 26px 26px 52px; }
+  .gm-showcase-card { width: 82%; }
+
+  .gm-card-name { font-size: 16px; }
+  .gm-spec-chip { font-size: 16px; padding: 6px 10px; }
+
+  .gm-showcase-dots { bottom: 14px; }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .gm-section * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

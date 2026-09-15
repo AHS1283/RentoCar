@@ -1,0 +1,264 @@
+/* =========================================
+   RENTOCAR PRIVACY PAGE
+   Theme matched to Home.css — warm paper/ink
+   palette, true orange accent, Times New Roman.
+========================================= */
+
+.privacy-page {
+  --ink: #17181c;
+  --ink-soft: #5c5e66;
+  --ink-faint: #97989f;
+
+  --paper: #fafaf6;
+  --paper-deep: #efeade;
+  --panel: #f4f1e8;
+  --cream: #ffffff;
+
+  --amber: #f4791e;
+  --amber-deep: #d9600a;
+  --amber-ink: #3d1e08;
+  --amber-wash: rgba(244, 121, 30, 0.14);
+
+  --line: rgba(20, 20, 20, 0.09);
+  --line-soft: rgba(20, 20, 20, 0.12);
+
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Times New Roman", serif;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.privacy-hero {
+  padding: 90px 24px 75px;
+  background: var(--ink);
+  color: #ffffff;
+}
+
+.privacy-hero-content {
+  width: min(100%, 1100px);
+  margin: 0 auto;
+}
+
+.privacy-eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: var(--amber);
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+
+.privacy-hero h1 {
+  margin: 0;
+  font-size: clamp(42px, 7vw, 72px);
+  line-height: 1;
+}
+
+.privacy-hero p {
+  max-width: 650px;
+  margin: 22px 0 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.privacy-breadcrumb {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.privacy-breadcrumb a {
+  color: var(--amber);
+  text-decoration: none;
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.privacy-content {
+  padding: 80px 24px;
+}
+
+.privacy-container {
+  width: min(100%, 950px);
+  margin: 0 auto;
+}
+
+.privacy-intro {
+  margin-bottom: 40px;
+}
+
+.privacy-label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--amber-deep);
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.privacy-intro h2 {
+  max-width: 800px;
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(30px, 5vw, 44px);
+  line-height: 1.15;
+}
+
+.privacy-intro p {
+  max-width: 720px;
+  margin: 16px 0 0;
+  color: var(--ink-soft);
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* =========================================
+   CARD
+========================================= */
+
+.privacy-card {
+  padding: 45px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--cream);
+  box-shadow: 0 10px 40px rgba(20, 15, 5, 0.05);
+}
+
+.privacy-card section {
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--line);
+}
+
+.privacy-card section:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.privacy-card h3 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: 23px;
+  line-height: 1.3;
+}
+
+.privacy-card p,
+.privacy-card li {
+  color: var(--ink-soft);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.privacy-card p {
+  margin: 0 0 12px;
+}
+
+.privacy-card ul {
+  margin: 12px 0 0;
+  padding-left: 22px;
+}
+
+.privacy-card li {
+  padding-left: 5px;
+}
+
+.privacy-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 20px;
+  padding: 20px;
+  border-left: 3px solid var(--amber);
+  background: var(--panel);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.privacy-contact strong {
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.privacy-contact span {
+  color: var(--ink-soft);
+}
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.privacy-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.privacy-navigation a {
+  color: var(--ink);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.privacy-navigation a:hover {
+  color: var(--amber-deep);
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+  .privacy-hero {
+    padding: 65px 18px 55px;
+  }
+
+  .privacy-hero h1 {
+    font-size: 42px;
+  }
+
+  .privacy-hero p {
+    font-size: 14px;
+  }
+
+  .privacy-content {
+    padding: 55px 16px;
+  }
+
+  .privacy-card {
+    padding: 25px 20px;
+    border-radius: 14px;
+  }
+
+  .privacy-card h3 {
+    font-size: 20px;
+  }
+
+  .privacy-card p,
+  .privacy-card li {
+    font-size: 13.5px;
+  }
+
+  .privacy-navigation {
+    flex-direction: column;
+  }
+}

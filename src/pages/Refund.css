@@ -1,0 +1,259 @@
+/* =========================================
+   RENTOCAR REFUND PAGE
+   Theme matched to Home.css — warm paper/ink
+   palette, true orange accent, Times New Roman.
+========================================= */
+
+.refund-page {
+  --ink: #17181c;
+  --ink-soft: #5c5e66;
+  --ink-faint: #97989f;
+
+  --paper: #fafaf6;
+  --paper-deep: #efeade;
+  --panel: #f4f1e8;
+  --cream: #ffffff;
+
+  --amber: #f4791e;
+  --amber-deep: #d9600a;
+  --amber-ink: #3d1e08;
+  --amber-wash: rgba(244, 121, 30, 0.14);
+
+  --line: rgba(20, 20, 20, 0.09);
+  --line-soft: rgba(20, 20, 20, 0.12);
+
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Times New Roman", serif;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.refund-hero {
+  padding: 90px 24px 75px;
+  background: var(--ink);
+  color: #ffffff;
+}
+
+.refund-hero-content {
+  width: min(100%, 1100px);
+  margin: 0 auto;
+}
+
+.refund-eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: var(--amber);
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+
+.refund-hero h1 {
+  max-width: 850px;
+  margin: 0;
+  font-size: clamp(42px, 7vw, 72px);
+  line-height: 1;
+}
+
+.refund-hero p {
+  max-width: 650px;
+  margin: 22px 0 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.refund-breadcrumb {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+
+.refund-breadcrumb a {
+  color: var(--amber);
+  text-decoration: none;
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.refund-content {
+  padding: 80px 24px;
+}
+
+.refund-container {
+  width: min(100%, 950px);
+  margin: 0 auto;
+}
+
+.refund-intro {
+  margin-bottom: 40px;
+}
+
+.refund-label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--amber-deep);
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.refund-intro h2 {
+  max-width: 750px;
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(30px, 5vw, 44px);
+  line-height: 1.15;
+}
+
+.refund-intro p {
+  max-width: 720px;
+  margin: 16px 0 0;
+  color: var(--ink-soft);
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* =========================================
+   CARD
+========================================= */
+
+.refund-card {
+  padding: 45px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--cream);
+  box-shadow: 0 10px 40px rgba(20, 15, 5, 0.05);
+}
+
+.refund-card section {
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--line);
+}
+
+.refund-card section:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.refund-card h3 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: 23px;
+  line-height: 1.3;
+}
+
+.refund-card p {
+  margin: 0 0 12px;
+  color: var(--ink-soft);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.refund-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================
+   CONTACT
+========================================= */
+
+.refund-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 20px;
+  padding: 20px;
+  border-left: 3px solid var(--amber);
+  background: var(--panel);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.refund-contact strong {
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.refund-contact span {
+  color: var(--ink-soft);
+}
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.refund-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.refund-navigation a {
+  color: var(--ink);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.refund-navigation a:hover {
+  color: var(--amber-deep);
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+  .refund-hero {
+    padding: 65px 18px 55px;
+  }
+
+  .refund-hero h1 {
+    font-size: 40px;
+  }
+
+  .refund-hero p {
+    font-size: 14px;
+  }
+
+  .refund-content {
+    padding: 55px 16px;
+  }
+
+  .refund-card {
+    padding: 25px 20px;
+    border-radius: 14px;
+  }
+
+  .refund-card h3 {
+    font-size: 20px;
+  }
+
+  .refund-card p {
+    font-size: 13.5px;
+  }
+
+  .refund-navigation {
+    flex-direction: column;
+  }
+}

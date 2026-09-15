@@ -1,0 +1,1149 @@
+/* =========================================================
+   RENTOCAR FOOTER — INK & AMBER PREMIUM THEME
+   Matches Home.css tokens: ink #17181c base, amber #f4791e
+   accent, amber-deep #d9600a hover — dark neutral surfaces
+   instead of a green-tinted dark theme.
+========================================================= */
+
+.rd-footer {
+  width: 100%;
+  background: #1c1d22;
+  color: #ffffff;
+  font-family: "Times New Roman", Times, serif;
+  overflow: hidden;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.rd-footer-container {
+  width: min(1200px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* =========================================================
+   TOP CTA
+========================================================= */
+
+.rd-footer-top {
+  padding: 60px 0 45px;
+
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(244, 121, 30, 0.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #24252c 0%,
+      #202127 55%,
+      #1c1d22 100%
+    );
+}
+
+/* =========================================================
+   CTA CARD
+========================================================= */
+
+.rd-footer-cta {
+  position: relative;
+
+  min-height: 180px;
+  padding: 38px 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  border: 1px solid rgba(244, 121, 30, 0.20);
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(244, 121, 30, 0.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      120deg,
+      #2b2c33,
+      #262730 55%,
+      #232430
+    );
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   CTA DECORATION
+========================================================= */
+
+.rd-cta-decoration {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.rd-decoration-one {
+  width: 250px;
+  height: 250px;
+
+  right: 8%;
+  top: -170px;
+
+  background: rgba(244, 121, 30, 0.08);
+
+  filter: blur(4px);
+}
+
+.rd-decoration-two {
+  width: 140px;
+  height: 140px;
+
+  right: 24%;
+  bottom: -100px;
+
+  background: rgba(244, 121, 30, 0.06);
+}
+
+/* =========================================================
+   CTA CONTENT
+========================================================= */
+
+.rd-cta-content {
+  position: relative;
+  z-index: 2;
+}
+
+.rd-cta-label {
+  display: inline-block;
+
+  margin-bottom: 9px;
+
+  color: #f4791e;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.rd-cta-content h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-family: "Times New Roman", Times, serif;
+  font-size: 35px;
+  line-height: 1.15;
+
+  letter-spacing: -1px;
+
+  font-weight: 600;
+}
+
+.rd-cta-content h2 span {
+  font-style: italic;
+  color: #f4791e;
+}
+
+.rd-cta-content p {
+  max-width: 560px;
+
+  margin: 12px 0 0;
+
+  color: #c7c9cf;
+
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+/* =========================================================
+   CTA BUTTON
+========================================================= */
+
+.rd-cta-button {
+  position: relative;
+  z-index: 2;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 13px 19px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: #f4791e;
+  color: #3d1e08;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.rd-cta-button:hover {
+  background: #d9600a;
+  color: #ffffff;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 10px 30px rgba(244, 121, 30, 0.25);
+}
+
+.rd-cta-button svg {
+  transition: transform 0.3s ease;
+}
+
+.rd-cta-button:hover svg {
+  transform: translate(3px, -3px);
+}
+
+/* =========================================================
+   MAIN FOOTER
+========================================================= */
+
+.rd-footer-main {
+  padding: 60px 0 45px;
+
+  background:
+    radial-gradient(
+      circle at 15% 70%,
+      rgba(244, 121, 30, 0.035),
+      transparent 28%
+    ),
+    #1c1d22;
+}
+
+.rd-footer-grid {
+  display: grid;
+
+  grid-template-columns:
+    1.6fr
+    1fr
+    1.15fr
+    1.2fr
+    1.35fr;
+
+  gap: 32px;
+}
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.rd-footer-brand {
+  max-width: 275px;
+}
+
+/* =========================================================
+   ACTUAL RENTOCAR LOGO
+========================================================= */
+
+.rd-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: fit-content;
+
+  padding: 0;
+  margin: 0;
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.rd-logo:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+.rd-logo-image {
+  width: 155px;
+  height: 70px;
+
+  display: block;
+
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* =========================================================
+   BRAND DESCRIPTION
+========================================================= */
+
+.rd-brand-description {
+  margin: 18px 0 22px;
+
+  color: #cdcfd5;
+
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   SOCIALS
+   (Glyphs act as brand icons inside fixed circular
+   buttons — sized to fit the circle, not body copy,
+   so left as-is.)
+========================================================= */
+
+.rd-socials {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.rd-socials a {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #3b3c44;
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #2b2c33,
+      #24252b
+    );
+
+  color: #b6b7bd;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.rd-socials a:hover {
+  transform: translateY(-3px);
+
+  background: #f4791e;
+  border-color: #f4791e;
+
+  color: #3d1e08;
+}
+
+.rd-social-instagram span {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.rd-social-facebook span {
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.rd-social-twitter span {
+  font-size: 20px;
+}
+
+.rd-social-youtube span {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   FOOTER COLUMNS
+========================================================= */
+
+.rd-footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.rd-footer-column h3 {
+  margin: 2px 0 18px;
+
+  color: #ffffff;
+
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  font-weight: 700;
+
+  letter-spacing: 0.2px;
+}
+
+.rd-footer-column button {
+  padding: 0;
+  margin: 0 0 13px;
+
+  border: none;
+  background: transparent;
+
+  color: #d3d4d9;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 16px;
+  font-weight: 450;
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.rd-footer-column button:hover {
+  color: #f4791e;
+
+  transform: translateX(3px);
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.rd-contact-item {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 12px;
+
+  color: #d3d4d9;
+
+  font-size: 16px;
+  font-weight: 450;
+  line-height: 1.4;
+
+  text-decoration: none;
+
+  transition: color 0.25s ease;
+}
+
+.rd-contact-item:hover {
+  color: #f4791e;
+}
+
+.rd-contact-icon {
+  width: 28px;
+  height: 28px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #29292f;
+  border: 1px solid #3a3b42;
+
+  color: #f4791e;
+}
+
+/* =========================================================
+   TRUST STRIP
+========================================================= */
+
+.rd-trust-strip {
+  margin-top: 50px;
+
+  padding-top: 28px;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 15px;
+
+  border-top: 1px solid #34353c;
+}
+
+.rd-trust-item {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 12px 6px;
+}
+
+.rd-trust-icon {
+  width: 52px;
+  height: 52px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #302f2a,
+      #29291f
+    );
+
+  border: 1px solid #423f34;
+
+  color: #f4791e;
+}
+
+.rd-trust-item div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.rd-trust-item strong {
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.rd-trust-item small {
+  color: #b3b4bb;
+
+  font-size: 16px;
+}
+
+/* =========================================================
+   APP SECTION
+========================================================= */
+
+.rd-app-section {
+  padding: 0 0 45px;
+
+  background: #1c1d22;
+}
+
+.rd-app-card {
+  min-height: 110px;
+
+  padding: 21px 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  border: 1px solid #3b3c43;
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #26272e,
+      #202128
+    );
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.15);
+
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
+
+  box-sizing: border-box;
+}
+
+.rd-app-card:hover {
+  border-color: #4d4d54;
+
+  transform: translateY(-2px);
+}
+
+.rd-app-content {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+}
+
+.rd-app-icon {
+  width: 50px;
+  height: 50px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: #302f27;
+  border: 1px solid #423f33;
+
+  color: #f4791e;
+}
+
+.rd-app-content span {
+  display: block;
+
+  color: #f4791e;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  letter-spacing: 1.3px;
+
+  text-transform: uppercase;
+}
+
+.rd-app-content h3 {
+  margin: 4px 0 0;
+
+  color: #ffffff;
+
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  line-height: 1.3;
+
+  font-weight: 550;
+}
+
+/* =========================================================
+   APP BUTTONS
+========================================================= */
+
+.rd-app-buttons {
+  display: flex;
+
+  gap: 9px;
+}
+
+.rd-app-buttons button {
+  min-width: 112px;
+
+  padding: 9px 13px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  border: 1px solid #3d3e45;
+  border-radius: 9px;
+
+  background: #212227;
+  color: #ffffff;
+
+  font-family: "Times New Roman", Times, serif;
+
+  cursor: default;
+}
+
+.rd-app-buttons small {
+  color: #9fa0a7;
+
+  font-size: 16px;
+
+  letter-spacing: 0.5px;
+}
+
+.rd-app-buttons strong {
+  margin-top: 3px;
+
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   BOTTOM FOOTER
+========================================================= */
+
+.rd-footer-bottom {
+  border-top: 1px solid #303136;
+
+  background:
+    linear-gradient(
+      180deg,
+      #17181c,
+      #131417
+    );
+}
+
+.rd-bottom-inner {
+  min-height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.rd-bottom-inner p {
+  margin: 0;
+
+  color: #a5a6ac;
+
+  font-size: 16px;
+}
+
+/* =========================================================
+   BOTTOM LINKS
+========================================================= */
+
+.rd-bottom-links {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.rd-bottom-links button {
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  color: #c9cad0;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 16px;
+  font-weight: 450;
+
+  cursor: pointer;
+
+  transition: color 0.25s ease;
+}
+
+.rd-bottom-links button:hover {
+  color: #f4791e;
+}
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.rd-back-top {
+  width: 33px;
+  height: 33px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #3e3f46;
+  border-radius: 9px;
+
+  background: transparent;
+  color: #b3b4ba;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.rd-back-top:hover {
+  background: #f4791e;
+
+  border-color: #f4791e;
+
+  color: #3d1e08;
+
+  transform: translateY(-3px);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+  .rd-footer-grid {
+    grid-template-columns:
+      1.5fr
+      1fr
+      1fr
+      1fr;
+  }
+
+  .rd-footer-brand {
+    grid-column: span 4;
+
+    max-width: 420px;
+  }
+
+  .rd-trust-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .rd-footer-container {
+    width: min(
+      calc(100% - 30px),
+      600px
+    );
+  }
+
+  /* CTA */
+
+  .rd-footer-top {
+    padding: 40px 0 30px;
+  }
+
+  .rd-footer-cta {
+    min-height: auto;
+
+    padding: 27px 22px;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 20px;
+
+    border-radius: 19px;
+  }
+
+  .rd-cta-content h2 {
+    font-size: 26px;
+
+    letter-spacing: -0.7px;
+  }
+
+  .rd-cta-content p {
+    font-size: 16px;
+
+    line-height: 1.65;
+  }
+
+  .rd-cta-button {
+    padding: 11px 16px;
+
+    font-size: 16px;
+  }
+
+  /* Main */
+
+  .rd-footer-main {
+    padding: 45px 0 35px;
+  }
+
+  .rd-footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 38px 25px;
+  }
+
+  .rd-footer-brand {
+    grid-column: span 2;
+
+    max-width: 100%;
+  }
+
+  /* Logo */
+
+  .rd-logo-image {
+    width: 150px;
+    height: 68px;
+  }
+
+  /* Socials */
+
+  .rd-socials a {
+    width: 40px;
+    height: 40px;
+  }
+
+  .rd-social-instagram span {
+    font-size: 11px;
+  }
+
+  .rd-social-facebook span {
+    font-size: 20px;
+  }
+
+  .rd-social-twitter span {
+    font-size: 17px;
+  }
+
+  .rd-social-youtube span {
+    font-size: 10px;
+  }
+
+  .rd-footer-column h3 {
+    margin-bottom: 14px;
+
+    font-size: 16px;
+  }
+
+  .rd-footer-column button {
+    margin-bottom: 10px;
+
+    font-size: 16px;
+  }
+
+  .rd-contact-item {
+    font-size: 16px;
+  }
+
+  /* Trust */
+
+  .rd-trust-strip {
+    margin-top: 40px;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+
+    padding-top: 22px;
+  }
+
+  .rd-trust-item {
+    padding: 10px 2px;
+
+    gap: 11px;
+  }
+
+  .rd-trust-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .rd-trust-item strong {
+    font-size: 16px;
+  }
+
+  .rd-trust-item small {
+    font-size: 16px;
+  }
+
+  /* App */
+
+  .rd-app-section {
+    padding-bottom: 35px;
+  }
+
+  .rd-app-card {
+    padding: 20px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+  }
+
+  .rd-app-content h3 {
+    font-size: 16px;
+  }
+
+  .rd-app-buttons {
+    width: 100%;
+  }
+
+  .rd-app-buttons button {
+    flex: 1;
+
+    min-width: 0;
+  }
+
+  /* Bottom */
+
+  .rd-bottom-inner {
+    min-height: auto;
+
+    padding: 17px 0;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+
+  .rd-bottom-inner p {
+    width: 100%;
+
+    text-align: center;
+  }
+
+  .rd-bottom-links {
+    gap: 15px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .rd-footer-container {
+    width: calc(100% - 24px);
+  }
+
+  .rd-footer-cta {
+    padding: 23px 18px;
+  }
+
+  .rd-cta-content h2 {
+    font-size: 23px;
+  }
+
+  .rd-cta-content p {
+    font-size: 16px;
+  }
+
+  .rd-footer-grid {
+    column-gap: 18px;
+  }
+
+  .rd-logo-image {
+    width: 135px;
+    height: 62px;
+  }
+
+  .rd-socials a {
+    width: 38px;
+    height: 38px;
+  }
+
+  .rd-trust-strip {
+    gap: 10px;
+  }
+
+  .rd-trust-item {
+    padding: 8px 2px;
+
+    gap: 9px;
+  }
+
+  .rd-trust-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .rd-trust-item strong {
+    font-size: 16px;
+  }
+
+  .rd-trust-item small {
+    font-size: 16px;
+  }
+
+  .rd-app-content {
+    align-items: flex-start;
+  }
+
+  .rd-app-buttons {
+    flex-direction: column;
+  }
+
+  .rd-app-buttons button {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 340px) {
+
+  .rd-logo-image {
+    width: 125px;
+    height: 58px;
+  }
+
+  .rd-footer-container {
+    width: calc(100% - 20px);
+  }
+
+  .rd-footer-grid {
+    column-gap: 14px;
+  }
+
+  .rd-footer-column button {
+    font-size: 16px;
+  }
+
+  .rd-contact-item {
+    font-size: 16px;
+  }
+
+  .rd-socials a {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.rd-footer button:focus-visible,
+.rd-footer a:focus-visible {
+  outline: 2px solid #f4791e;
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .rd-footer *,
+  .rd-footer *::before,
+  .rd-footer *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,934 @@
+/* =========================================
+   Rentocar Authentication Modal
+   Theme: matched exactly to Home.css —
+   warm paper/ink palette, true orange accent,
+   Times New Roman.
+========================================= */
+
+.rd-auth-overlay {
+  --ink: #17181c;
+  --ink-soft: #5c5e66;
+  --ink-faint: #97989f;
+
+  --paper: #fafaf6;
+  --paper-deep: #efeade;
+  --panel: #f4f1e8;
+  --cream: #ffffff;
+
+  --amber: #f4791e;
+  --amber-deep: #d9600a;
+  --amber-ink: #3d1e08;
+  --amber-wash: rgba(244, 121, 30, 0.16);
+
+  --line: rgba(20, 20, 20, 0.09);
+  --line-soft: rgba(20, 20, 20, 0.12);
+
+  position: fixed;
+  inset: 0;
+
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px;
+
+  background: rgba(8, 12, 10, 0.78);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  font-family: "Times New Roman", Times, serif;
+
+  animation: rdOverlay 0.25s ease;
+}
+
+@keyframes rdOverlay {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.rd-auth-modal {
+  position: relative;
+
+  width: min(1000px, 100%);
+
+  min-height: 610px;
+
+  display: grid;
+
+  grid-template-columns: 46% 54%;
+
+  overflow: hidden;
+
+  border-radius: 24px;
+
+  background: var(--cream);
+
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.45);
+
+  animation: rdModal 0.4s ease;
+}
+
+@keyframes rdModal {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* =========================================
+   CLOSE
+========================================= */
+
+.rd-auth-close {
+  position: absolute;
+
+  top: 18px;
+  right: 18px;
+
+  z-index: 50;
+
+  width: 40px;
+  height: 40px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  color: var(--ink);
+
+  font-size: 28px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.15);
+
+  transition: 0.25s ease;
+}
+
+.rd-auth-close:hover {
+  transform: rotate(90deg);
+
+  background: var(--cream);
+}
+
+
+/* =========================================
+   LEFT
+   (dark ink → amber-ink gradient, matched to
+   Home.css --ink / --amber-ink)
+========================================= */
+
+.rd-auth-left {
+  position: relative;
+
+  overflow: hidden;
+
+  min-height: 610px;
+
+  padding: 45px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #17181c 0%,
+      #2b2117 55%,
+      #3d1e08 100%
+    );
+
+  color: var(--cream);
+}
+
+.rd-auth-brand {
+  position: relative;
+
+  z-index: 5;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  font-size: 20px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
+}
+
+.rd-brand-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: var(--amber);
+
+  color: var(--amber-ink);
+
+  font-size: 20px;
+  font-weight: 900;
+}
+
+
+/* =========================================
+   LEFT CONTENT
+========================================= */
+
+.rd-auth-left-content {
+  position: relative;
+
+  z-index: 5;
+
+  margin-top: 100px;
+
+  max-width: 390px;
+}
+
+.rd-auth-label {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 2.5px;
+
+  color: var(--amber);
+}
+
+.rd-auth-left-content h2 {
+  margin: 0;
+
+  font-size: clamp(40px, 4vw, 56px);
+
+  line-height: 0.98;
+
+  letter-spacing: -2px;
+
+  color: var(--cream);
+}
+
+.rd-auth-left-content h2 span {
+  color: var(--amber);
+}
+
+.rd-auth-left-content > p {
+  max-width: 350px;
+
+  margin-top: 25px;
+
+  color: rgba(255, 255, 255, 0.85);
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.rd-auth-features {
+  margin-top: 32px;
+}
+
+.rd-feature {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 13px;
+}
+
+.rd-feature span {
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(244, 121, 30, 0.18);
+
+  color: var(--amber);
+
+  font-size: 12px;
+}
+
+.rd-feature p {
+  margin: 0;
+
+  font-size: 16px;
+
+  color: rgba(255, 255, 255, 0.88);
+}
+
+
+/* =========================================
+   DECORATIVE CIRCLES
+========================================= */
+
+.rd-auth-circle {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.circle-one {
+  width: 300px;
+  height: 300px;
+
+  right: -150px;
+  bottom: -100px;
+
+  border: 1px solid rgba(244, 121, 30, 0.18);
+}
+
+.circle-two {
+  width: 500px;
+  height: 500px;
+
+  right: -300px;
+  bottom: -250px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================
+   CAR DECORATION
+========================================= */
+
+.rd-car-shape {
+  position: absolute;
+
+  right: 25px;
+  bottom: 30px;
+
+  z-index: 4;
+
+  font-size: 100px;
+
+  opacity: 0.16;
+
+  transform: rotate(-5deg);
+}
+
+
+/* =========================================
+   RIGHT
+========================================= */
+
+.rd-auth-right {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 70px 70px;
+
+  background: var(--cream);
+}
+
+.rd-auth-heading > span {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: var(--amber-deep);
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 1.4px;
+
+  text-transform: uppercase;
+}
+
+.rd-auth-heading h1 {
+  margin: 0;
+
+  color: var(--ink);
+
+  font-size: 34px;
+
+  line-height: 1.15;
+
+  letter-spacing: -1px;
+}
+
+.rd-auth-heading p {
+  margin: 13px 0 32px;
+
+  color: var(--ink-soft);
+
+  font-size: 16px;
+
+  line-height: 1.6;
+}
+
+.rd-auth-heading p strong {
+  color: var(--ink);
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.rd-input-label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: var(--ink);
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.rd-phone-box {
+  display: flex;
+
+  height: 60px;
+
+  border: 1px solid var(--line-soft);
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  transition: 0.25s ease;
+}
+
+.rd-phone-box:focus-within {
+  border-color: var(--amber-deep);
+
+  box-shadow:
+    0 0 0 4px rgba(217, 96, 10, 0.12);
+}
+
+.rd-country {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  min-width: 91px;
+
+  padding: 0 15px;
+
+  border-right: 1px solid var(--line);
+
+  background: var(--panel);
+
+  font-size: 16px;
+}
+
+.rd-country span {
+  font-size: 20px;
+}
+
+.rd-phone-box input {
+  flex: 1;
+
+  min-width: 0;
+
+  padding: 0 17px;
+
+  border: none;
+
+  outline: none;
+
+  color: var(--ink);
+
+  font-family: inherit;
+
+  font-size: 16px;
+}
+
+.rd-phone-box input::placeholder {
+  color: var(--ink-faint);
+}
+
+
+/* =========================================
+   OTP
+========================================= */
+
+.rd-otp {
+  width: 100%;
+
+  height: 62px;
+
+  padding: 0 18px;
+
+  border: 1px solid var(--line-soft);
+
+  border-radius: 10px;
+
+  outline: none;
+
+  text-align: center;
+
+  letter-spacing: 12px;
+
+  font-size: 23px;
+
+  color: var(--ink);
+
+  font-family: inherit;
+
+  transition: 0.25s ease;
+}
+
+.rd-otp:focus {
+  border-color: var(--amber-deep);
+
+  box-shadow:
+    0 0 0 4px rgba(217, 96, 10, 0.12);
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.rd-auth-button {
+  width: 100%;
+
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 22px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: var(--ink);
+
+  color: var(--cream);
+
+  font-family: inherit;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.rd-auth-button span {
+  font-size: 19px;
+
+  transition: 0.25s ease;
+}
+
+.rd-auth-button:hover:not(:disabled) {
+  background: var(--amber-deep);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(217, 96, 10, 0.25);
+}
+
+.rd-auth-button:hover:not(:disabled) span {
+  transform: translateX(4px);
+}
+
+.rd-auth-button:disabled {
+  background: var(--line-soft);
+
+  color: var(--ink-faint);
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   SPINNER
+========================================= */
+
+.rd-spinner {
+  width: 17px;
+  height: 17px;
+
+  border: 2px solid rgba(255, 255, 255, 0.35);
+
+  border-top-color: #ffffff;
+
+  border-radius: 50%;
+
+  animation: rdSpin 0.7s linear infinite;
+}
+
+@keyframes rdSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================
+   ERROR / SUCCESS
+   (kept semantic red/green — not brand colors)
+========================================= */
+
+.rd-auth-error {
+  margin-top: 12px;
+
+  padding: 11px 13px;
+
+  border-radius: 8px;
+
+  background: #fff2f2;
+
+  color: #d93025;
+
+  font-size: 16px;
+
+  line-height: 1.5;
+}
+
+.rd-auth-success {
+  margin-top: 12px;
+
+  padding: 11px 13px;
+
+  border-radius: 8px;
+
+  background: #eefaf2;
+
+  color: #168a4a;
+
+  font-size: 16px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   SECURE
+========================================= */
+
+.rd-secure {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 40px;
+
+  padding: 14px;
+
+  border-radius: 10px;
+
+  background: var(--panel);
+}
+
+.rd-secure > span {
+  font-size: 17px;
+}
+
+.rd-secure strong {
+  display: block;
+
+  color: var(--ink);
+
+  font-size: 16px;
+}
+
+.rd-secure p {
+  margin: 3px 0 0;
+
+  color: var(--ink-soft);
+
+  font-size: 16px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   TERMS
+========================================= */
+
+.rd-terms {
+  margin: 22px 0 0;
+
+  text-align: center;
+
+  color: var(--ink-soft);
+
+  font-size: 16px;
+
+  line-height: 1.6;
+}
+
+.rd-terms a {
+  color: var(--amber-deep);
+
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   BACK
+========================================= */
+
+.rd-back {
+  width: fit-content;
+
+  margin-bottom: 30px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: var(--amber-deep);
+
+  font-family: inherit;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.rd-back:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   RESEND
+========================================= */
+
+.rd-resend {
+  margin-top: 20px;
+
+  border: none;
+
+  background: transparent;
+
+  color: var(--ink-soft);
+
+  font-family: inherit;
+
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+.rd-resend span {
+  color: var(--amber-deep);
+
+  font-weight: 700;
+}
+
+
+/* =========================================
+   RECAPTCHA
+========================================= */
+
+.rd-recaptcha {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 850px) {
+
+  .rd-auth-modal {
+    grid-template-columns: 42% 58%;
+  }
+
+  .rd-auth-left {
+    padding: 35px;
+  }
+
+  .rd-auth-left-content {
+    margin-top: 80px;
+  }
+
+  .rd-auth-right {
+    padding: 55px 40px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .rd-auth-overlay {
+    padding: 10px;
+  }
+
+  .rd-auth-modal {
+    display: block;
+
+    width: 100%;
+
+    min-height: auto;
+
+    max-height: 95vh;
+
+    overflow-y: auto;
+
+    border-radius: 20px;
+  }
+
+  .rd-auth-left {
+    min-height: auto;
+
+    padding: 30px 22px 26px;
+  }
+
+  .rd-auth-left-content {
+    margin-top: 24px;
+
+    max-width: 100%;
+  }
+
+  .rd-auth-left-content h2 {
+    font-size: clamp(30px, 8vw, 40px);
+  }
+
+  .rd-auth-features {
+    margin-top: 22px;
+  }
+
+  .circle-one,
+  .circle-two,
+  .rd-car-shape {
+    display: none;
+  }
+
+  .rd-auth-right {
+    min-height: auto;
+
+    padding: 30px 25px 30px;
+  }
+
+  .rd-auth-close {
+    top: 12px;
+    right: 12px;
+
+    width: 36px;
+    height: 36px;
+
+    font-size: 25px;
+  }
+
+  .rd-auth-heading h1 {
+    font-size: 28px;
+  }
+
+  .rd-secure {
+    margin-top: 35px;
+  }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+
+  .rd-auth-left {
+    padding: 26px 18px 22px;
+  }
+
+  .rd-auth-right {
+    padding: 26px 18px 25px;
+  }
+
+  .rd-auth-heading h1 {
+    font-size: 25px;
+  }
+
+  .rd-country {
+    min-width: 82px;
+
+    padding: 0 11px;
+  }
+
+  .rd-phone-box input {
+    font-size: 16px;
+  }
+
+  .rd-otp {
+    letter-spacing: 7px;
+  }
+
+  .rd-divider {
+    margin: 18px 0;
+  }
+}

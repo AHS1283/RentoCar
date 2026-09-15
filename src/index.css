@@ -1,13 +1,200 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  /* Colors */
+  --navy: #17181c;
+  --navy-soft: #2a2b30;
+  --blue: #d9600a;
+  --blue-dark: #a8480a;
+  --amber: #f4791e;
+  --amber-dark: #d9600a;
+  --bg: #fafaf6;
+  --surface: #FFFFFF;
+  --text: #17181c;
+  --muted: #5c5e66;
+  --border: rgba(20, 20, 20, 0.12);
+  --success: #1FAE6B;
+  --danger: #C9781A;
+
+  /* Type */
+  --font-display: "Times New Roman", serif;
+  --font-body: "Times New Roman", serif;
+
+  /* Radius / shadow */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --shadow-md: 0 8px 24px rgba(23, 24, 28, 0.10);
+  --shadow-lg: 0 20px 48px rgba(23, 24, 28, 0.18);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+* {
+  font-family: "Times New Roman", Times, serif;
+}
+/* =========================================================
+   HEADING SCALE — big, confident hero titles down to card
+   sub-headings. Uses clamp() so they scale smoothly on mobile
+   instead of jumping at breakpoints.
+========================================================= */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+h1 {
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(26px, 3.2vw, 38px);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+h3 {
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+p { margin: 0; line-height: 1.6; color: var(--muted); }
+
+/* Lead / subtext paragraph — sits right under a hero or
+   section title, needs to be bigger and calmer than body copy */
+
+.lead {
+  font-size: clamp(16px, 1.6vw, 19px);
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 640px;
+}
+
+/* Regular body copy inside cards, sections etc. */
+
+.text-body {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+a { text-decoration: none; color: inherit; }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+}
+
+/* Reusable utility classes */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: var(--amber);
+  color: var(--navy);
+  box-shadow: 0 6px 16px rgba(244, 121, 30, 0.35);
+}
+.btn-primary:hover { background: var(--amber-dark); }
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--border);
+  color: var(--text);
+}
+.btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+.btn-block { width: 100%; }
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.section {
+  padding: 64px 0;
+}
+
+.eyebrow {
+  color: var(--blue-dark);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.field label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.field input, .field select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  font-size: 16px;
+  font-family: var(--font-body);
+  background: var(--surface);
+  color: var(--text);
+}
+.field input:focus, .field select:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(217, 96, 10, 0.15);
+}
+
+.error-text {
+  color: var(--danger);
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+@media (max-width: 640px) {
+  .section { padding: 40px 0; }
+
+  h1 { font-size: 32px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 19px; }
+
+  .lead { font-size: 16px; }
 }
