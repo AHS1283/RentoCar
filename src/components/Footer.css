@@ -1,17 +1,16 @@
 /* =========================================================
-   RENTOCAR FOOTER — INK & AMBER PREMIUM THEME
-   Matches Home.css tokens: ink #17181c base, amber #f4791e
-   accent, amber-deep #d9600a hover — dark neutral surfaces
-   instead of a green-tinted dark theme.
+   RENTOCAR FOOTER
+   PREMIUM INK & AMBER THEME
 ========================================================= */
 
 .rd-footer {
   width: 100%;
-  background: #1c1d22;
+  background: #17181c;
   color: #ffffff;
   font-family: "Times New Roman", Times, serif;
   overflow: hidden;
 }
+
 
 /* =========================================================
    CONTAINER
@@ -21,6 +20,7 @@
   width: min(1200px, calc(100% - 40px));
   margin: 0 auto;
 }
+
 
 /* =========================================================
    TOP CTA
@@ -39,9 +39,10 @@
       135deg,
       #24252c 0%,
       #202127 55%,
-      #1c1d22 100%
+      #17181c 100%
     );
 }
+
 
 /* =========================================================
    CTA CARD
@@ -51,6 +52,7 @@
   position: relative;
 
   min-height: 180px;
+
   padding: 38px 42px;
 
   display: flex;
@@ -59,7 +61,8 @@
 
   gap: 30px;
 
-  border: 1px solid rgba(244, 121, 30, 0.20);
+  border: 1px solid rgba(244, 121, 30, 0.2);
+
   border-radius: 24px;
 
   overflow: hidden;
@@ -78,11 +81,12 @@
     );
 
   box-shadow:
-    0 20px 55px rgba(0, 0, 0, 0.20),
+    0 20px 55px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.025);
 
   box-sizing: border-box;
 }
+
 
 /* =========================================================
    CTA DECORATION
@@ -90,7 +94,9 @@
 
 .rd-cta-decoration {
   position: absolute;
+
   border-radius: 50%;
+
   pointer-events: none;
 }
 
@@ -116,12 +122,14 @@
   background: rgba(244, 121, 30, 0.06);
 }
 
+
 /* =========================================================
    CTA CONTENT
 ========================================================= */
 
 .rd-cta-content {
   position: relative;
+
   z-index: 2;
 }
 
@@ -133,9 +141,11 @@
   color: #f4791e;
 
   font-size: 16px;
+
   font-weight: 700;
 
   letter-spacing: 2px;
+
   text-transform: uppercase;
 }
 
@@ -145,7 +155,9 @@
   color: #ffffff;
 
   font-family: "Times New Roman", Times, serif;
+
   font-size: 35px;
+
   line-height: 1.15;
 
   letter-spacing: -1px;
@@ -154,8 +166,9 @@
 }
 
 .rd-cta-content h2 span {
-  font-style: italic;
   color: #f4791e;
+
+  font-style: italic;
 }
 
 .rd-cta-content p {
@@ -166,8 +179,10 @@
   color: #c7c9cf;
 
   font-size: 16px;
+
   line-height: 1.65;
 }
+
 
 /* =========================================================
    CTA BUTTON
@@ -175,6 +190,7 @@
 
 .rd-cta-button {
   position: relative;
+
   z-index: 2;
 
   flex-shrink: 0;
@@ -187,14 +203,17 @@
   padding: 13px 19px;
 
   border: none;
+
   border-radius: 30px;
 
   background: #f4791e;
+
   color: #3d1e08;
 
   font-family: "Times New Roman", Times, serif;
 
   font-size: 16px;
+
   font-weight: 700;
 
   cursor: pointer;
@@ -207,6 +226,7 @@
 
 .rd-cta-button:hover {
   background: #d9600a;
+
   color: #ffffff;
 
   transform: translateY(-3px);
@@ -223,6 +243,7 @@
   transform: translate(3px, -3px);
 }
 
+
 /* =========================================================
    MAIN FOOTER
 ========================================================= */
@@ -236,7 +257,7 @@
       rgba(244, 121, 30, 0.035),
       transparent 28%
     ),
-    #1c1d22;
+    #17181c;
 }
 
 .rd-footer-grid {
@@ -252,6 +273,7 @@
   gap: 32px;
 }
 
+
 /* =========================================================
    BRAND
 ========================================================= */
@@ -260,12 +282,14 @@
   max-width: 275px;
 }
 
+
 /* =========================================================
-   ACTUAL RENTOCAR LOGO
+   LOGO
 ========================================================= */
 
 .rd-logo {
   display: inline-flex;
+
   align-items: center;
   justify-content: flex-start;
 
@@ -275,11 +299,10 @@
   margin: 0;
 
   border: none;
+
   background: transparent;
 
   cursor: pointer;
-
-  text-decoration: none;
 
   transition:
     transform 0.25s ease,
@@ -288,6 +311,7 @@
 
 .rd-logo:hover {
   transform: translateY(-2px);
+
   opacity: 0.92;
 }
 
@@ -298,8 +322,10 @@
   display: block;
 
   object-fit: contain;
+
   object-position: left center;
 }
+
 
 /* =========================================================
    BRAND DESCRIPTION
@@ -311,18 +337,18 @@
   color: #cdcfd5;
 
   font-size: 16px;
+
   line-height: 1.7;
 }
 
+
 /* =========================================================
    SOCIALS
-   (Glyphs act as brand icons inside fixed circular
-   buttons — sized to fit the circle, not body copy,
-   so left as-is.)
 ========================================================= */
 
 .rd-socials {
   display: flex;
+
   align-items: center;
 
   gap: 12px;
@@ -333,10 +359,12 @@
   height: 46px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
   border: 1px solid #3b3c44;
+
   border-radius: 50%;
 
   background:
@@ -361,6 +389,7 @@
   transform: translateY(-3px);
 
   background: #f4791e;
+
   border-color: #f4791e;
 
   color: #3d1e08;
@@ -368,11 +397,13 @@
 
 .rd-social-instagram span {
   font-size: 13px;
+
   font-weight: 700;
 }
 
 .rd-social-facebook span {
   font-size: 23px;
+
   font-weight: 700;
 }
 
@@ -382,8 +413,10 @@
 
 .rd-social-youtube span {
   font-size: 11px;
+
   font-weight: 700;
 }
+
 
 /* =========================================================
    FOOTER COLUMNS
@@ -391,7 +424,9 @@
 
 .rd-footer-column {
   display: flex;
+
   flex-direction: column;
+
   align-items: flex-start;
 }
 
@@ -401,7 +436,9 @@
   color: #ffffff;
 
   font-family: "Times New Roman", Times, serif;
+
   font-size: 17px;
+
   font-weight: 700;
 
   letter-spacing: 0.2px;
@@ -409,9 +446,11 @@
 
 .rd-footer-column button {
   padding: 0;
+
   margin: 0 0 13px;
 
   border: none;
+
   background: transparent;
 
   color: #d3d4d9;
@@ -419,6 +458,7 @@
   font-family: "Times New Roman", Times, serif;
 
   font-size: 16px;
+
   font-weight: 450;
 
   cursor: pointer;
@@ -434,12 +474,14 @@
   transform: translateX(3px);
 }
 
+
 /* =========================================================
    CONTACT
 ========================================================= */
 
 .rd-contact-item {
   display: flex;
+
   align-items: center;
 
   gap: 9px;
@@ -449,7 +491,9 @@
   color: #d3d4d9;
 
   font-size: 16px;
+
   font-weight: 450;
+
   line-height: 1.4;
 
   text-decoration: none;
@@ -468,16 +512,19 @@
   flex-shrink: 0;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
   border-radius: 8px;
 
   background: #29292f;
+
   border: 1px solid #3a3b42;
 
   color: #f4791e;
 }
+
 
 /* =========================================================
    TRUST STRIP
@@ -499,6 +546,7 @@
 
 .rd-trust-item {
   display: flex;
+
   align-items: center;
 
   gap: 14px;
@@ -513,6 +561,7 @@
   flex-shrink: 0;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
@@ -532,6 +581,7 @@
 
 .rd-trust-item div {
   display: flex;
+
   flex-direction: column;
 
   gap: 4px;
@@ -541,14 +591,16 @@
   color: #ffffff;
 
   font-size: 16px;
+
   font-weight: 650;
 }
 
 .rd-trust-item small {
   color: #b3b4bb;
 
-  font-size: 16px;
+  font-size: 15px;
 }
+
 
 /* =========================================================
    APP SECTION
@@ -557,7 +609,7 @@
 .rd-app-section {
   padding: 0 0 45px;
 
-  background: #1c1d22;
+  background: #17181c;
 }
 
 .rd-app-card {
@@ -566,12 +618,15 @@
   padding: 21px 25px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
   gap: 25px;
 
   border: 1px solid #3b3c43;
+
   border-radius: 17px;
 
   background:
@@ -599,6 +654,7 @@
 
 .rd-app-content {
   display: flex;
+
   align-items: center;
 
   gap: 14px;
@@ -611,12 +667,14 @@
   flex-shrink: 0;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
   border-radius: 13px;
 
   background: #302f27;
+
   border: 1px solid #423f33;
 
   color: #f4791e;
@@ -628,6 +686,7 @@
   color: #f4791e;
 
   font-size: 16px;
+
   font-weight: 700;
 
   letter-spacing: 1.3px;
@@ -641,11 +700,14 @@
   color: #ffffff;
 
   font-family: "Times New Roman", Times, serif;
+
   font-size: 17px;
+
   line-height: 1.3;
 
   font-weight: 550;
 }
+
 
 /* =========================================================
    APP BUTTONS
@@ -663,13 +725,17 @@
   padding: 9px 13px;
 
   display: flex;
+
   flex-direction: column;
+
   align-items: flex-start;
 
   border: 1px solid #3d3e45;
+
   border-radius: 9px;
 
   background: #212227;
+
   color: #ffffff;
 
   font-family: "Times New Roman", Times, serif;
@@ -680,7 +746,7 @@
 .rd-app-buttons small {
   color: #9fa0a7;
 
-  font-size: 16px;
+  font-size: 12px;
 
   letter-spacing: 0.5px;
 }
@@ -691,8 +757,10 @@
   color: #ffffff;
 
   font-size: 16px;
+
   font-weight: 600;
 }
+
 
 /* =========================================================
    BOTTOM FOOTER
@@ -710,13 +778,32 @@
 }
 
 .rd-bottom-inner {
-  min-height: 62px;
+  min-height: 72px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
-  gap: 20px;
+  gap: 25px;
+}
+
+
+/* =========================================================
+   COPYRIGHT + SYTEOS LABS
+========================================================= */
+
+.rd-bottom-left {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 6px;
+
+  min-width: 0;
 }
 
 .rd-bottom-inner p {
@@ -727,12 +814,84 @@
   font-size: 16px;
 }
 
+.rd-company-credit {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 4px;
+
+  color: #777a82;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+.rd-company-credit a {
+  position: relative;
+
+  display: inline-block;
+
+  color: #f4791e;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  z-index: 10;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.rd-company-credit a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  bottom: -3px;
+
+  width: 100%;
+
+  height: 1px;
+
+  background: #f4791e;
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition: transform 0.25s ease;
+}
+
+.rd-company-credit a:hover {
+  color: #ffffff;
+
+  transform: translateY(-1px);
+}
+
+.rd-company-credit a:hover::after {
+  transform: scaleX(1);
+}
+
+
 /* =========================================================
    BOTTOM LINKS
 ========================================================= */
 
 .rd-bottom-links {
   display: flex;
+
   align-items: center;
 
   gap: 20px;
@@ -742,6 +901,7 @@
   padding: 0;
 
   border: none;
+
   background: transparent;
 
   color: #c9cad0;
@@ -749,6 +909,7 @@
   font-family: "Times New Roman", Times, serif;
 
   font-size: 16px;
+
   font-weight: 450;
 
   cursor: pointer;
@@ -760,6 +921,7 @@
   color: #f4791e;
 }
 
+
 /* =========================================================
    BACK TO TOP
 ========================================================= */
@@ -769,13 +931,16 @@
   height: 33px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
   border: 1px solid #3e3f46;
+
   border-radius: 9px;
 
   background: transparent;
+
   color: #b3b4ba;
 
   cursor: pointer;
@@ -783,7 +948,8 @@
   transition:
     background 0.25s ease,
     color 0.25s ease,
-    transform 0.25s ease;
+    transform 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .rd-back-top:hover {
@@ -795,6 +961,7 @@
 
   transform: translateY(-3px);
 }
+
 
 /* =========================================================
    TABLET
@@ -821,6 +988,7 @@
   }
 }
 
+
 /* =========================================================
    MOBILE
 ========================================================= */
@@ -834,6 +1002,7 @@
     );
   }
 
+
   /* CTA */
 
   .rd-footer-top {
@@ -846,6 +1015,7 @@
     padding: 27px 22px;
 
     flex-direction: column;
+
     align-items: flex-start;
 
     gap: 20px;
@@ -871,7 +1041,8 @@
     font-size: 16px;
   }
 
-  /* Main */
+
+  /* MAIN */
 
   .rd-footer-main {
     padding: 45px 0 35px;
@@ -889,17 +1060,21 @@
     max-width: 100%;
   }
 
-  /* Logo */
+
+  /* LOGO */
 
   .rd-logo-image {
     width: 150px;
+
     height: 68px;
   }
 
-  /* Socials */
+
+  /* SOCIALS */
 
   .rd-socials a {
     width: 40px;
+
     height: 40px;
   }
 
@@ -919,6 +1094,9 @@
     font-size: 10px;
   }
 
+
+  /* COLUMNS */
+
   .rd-footer-column h3 {
     margin-bottom: 14px;
 
@@ -932,10 +1110,11 @@
   }
 
   .rd-contact-item {
-    font-size: 16px;
+    font-size: 15px;
   }
 
-  /* Trust */
+
+  /* TRUST */
 
   .rd-trust-strip {
     margin-top: 40px;
@@ -955,18 +1134,20 @@
 
   .rd-trust-icon {
     width: 44px;
+
     height: 44px;
   }
 
   .rd-trust-item strong {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .rd-trust-item small {
-    font-size: 16px;
+    font-size: 13px;
   }
 
-  /* App */
+
+  /* APP */
 
   .rd-app-section {
     padding-bottom: 35px;
@@ -996,16 +1177,29 @@
     min-width: 0;
   }
 
-  /* Bottom */
+
+  /* BOTTOM */
 
   .rd-bottom-inner {
     min-height: auto;
 
-    padding: 17px 0;
+    padding: 20px 0;
 
     flex-wrap: wrap;
 
     justify-content: center;
+
+    gap: 15px;
+  }
+
+  .rd-bottom-left {
+    width: 100%;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 5px;
   }
 
   .rd-bottom-inner p {
@@ -1014,10 +1208,19 @@
     text-align: center;
   }
 
+  .rd-company-credit {
+    justify-content: center;
+
+    text-align: center;
+
+    font-size: 12px;
+  }
+
   .rd-bottom-links {
     gap: 15px;
   }
 }
+
 
 /* =========================================================
    SMALL MOBILE
@@ -1038,7 +1241,7 @@
   }
 
   .rd-cta-content p {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .rd-footer-grid {
@@ -1047,11 +1250,13 @@
 
   .rd-logo-image {
     width: 135px;
+
     height: 62px;
   }
 
   .rd-socials a {
     width: 38px;
+
     height: 38px;
   }
 
@@ -1067,15 +1272,16 @@
 
   .rd-trust-icon {
     width: 40px;
+
     height: 40px;
   }
 
   .rd-trust-item strong {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .rd-trust-item small {
-    font-size: 16px;
+    font-size: 12px;
   }
 
   .rd-app-content {
@@ -1091,6 +1297,7 @@
   }
 }
 
+
 /* =========================================================
    VERY SMALL MOBILE
 ========================================================= */
@@ -1099,6 +1306,7 @@
 
   .rd-logo-image {
     width: 125px;
+
     height: 58px;
   }
 
@@ -1111,18 +1319,24 @@
   }
 
   .rd-footer-column button {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .rd-contact-item {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .rd-socials a {
     width: 36px;
+
     height: 36px;
   }
+
+  .rd-company-credit {
+    font-size: 11px;
+  }
 }
+
 
 /* =========================================================
    ACCESSIBILITY
@@ -1131,8 +1345,10 @@
 .rd-footer button:focus-visible,
 .rd-footer a:focus-visible {
   outline: 2px solid #f4791e;
+
   outline-offset: 3px;
 }
+
 
 /* =========================================================
    REDUCED MOTION
@@ -1144,6 +1360,7 @@
   .rd-footer *::before,
   .rd-footer *::after {
     animation: none !important;
+
     transition: none !important;
   }
 }

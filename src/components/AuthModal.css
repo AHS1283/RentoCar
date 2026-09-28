@@ -385,7 +385,7 @@
   text-transform: uppercase;
 }
 
-.rd-auth-heading h1 {
+.rd-auth-heading h2 {
   margin: 0;
 
   color: var(--ink);
@@ -885,7 +885,7 @@
     font-size: 25px;
   }
 
-  .rd-auth-heading h1 {
+  .rd-auth-heading h2 {
     font-size: 28px;
   }
 
@@ -910,7 +910,7 @@
     padding: 26px 18px 25px;
   }
 
-  .rd-auth-heading h1 {
+  .rd-auth-heading h2 {
     font-size: 25px;
   }
 

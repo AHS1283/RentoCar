@@ -172,6 +172,7 @@ export default function HowItWorksGameMap() {
   return (
     <section
       ref={sectionRef}
+      id="how-it-works"
       className={`gm-section ${visible ? "gm-visible" : ""}`}
     >
       <div className="gm-container">

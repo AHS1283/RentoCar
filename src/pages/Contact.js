@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import {
   ArrowUpRight,
   Mail,
@@ -11,8 +12,101 @@ import {
 } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
-import SEO from "../components/SEO";
 import "./Contact.css";
+
+/* =====================================================
+   SEO CONTENT
+===================================================== */
+
+const SITE_URL = "https://www.rentocar.in";
+const PAGE_URL = `${SITE_URL}/contact`;
+
+const SEO_TITLE =
+  "Contact RentoCar | Self Drive Car Rental Support in Pune";
+
+const SEO_DESCRIPTION =
+  "Get in touch with RentoCar for booking help, car availability or general questions. Call, email or send us a message. Our Pune team is here to help.";
+
+const SEO_KEYWORDS =
+  "contact RentoCar, RentoCar Pune contact, self drive car rental Pune, car rental support Pune, rent a car in Pune, car rental customer care Pune";
+
+/* =====================================================
+   HEAD HELPERS
+===================================================== */
+
+function setMeta(attr, key, content) {
+  let tags = Array.from(
+    document.head.querySelectorAll(`meta[${attr}="${key}"]`)
+  );
+
+  const created = tags.length === 0;
+
+  if (created) {
+    const tag = document.createElement("meta");
+    tag.setAttribute(attr, key);
+    document.head.appendChild(tag);
+    tags = [tag];
+  }
+
+  const previous = tags.map((tag) => tag.getAttribute("content"));
+
+  tags.forEach((tag) => {
+    tag.setAttribute("content", content);
+  });
+
+  return () => {
+    tags.forEach((tag, index) => {
+      if (created) {
+        if (tag.parentNode) {
+          tag.parentNode.removeChild(tag);
+        }
+      } else if (previous[index] === null) {
+        tag.removeAttribute("content");
+      } else {
+        tag.setAttribute("content", previous[index]);
+      }
+    });
+  };
+}
+
+function setCanonical(url) {
+  let links = Array.from(
+    document.head.querySelectorAll('link[rel="canonical"]')
+  );
+
+  const created = links.length === 0;
+
+  if (created) {
+    const link = document.createElement("link");
+    link.setAttribute("rel", "canonical");
+    document.head.appendChild(link);
+    links = [link];
+  }
+
+  const previous = links.map((link) => link.getAttribute("href"));
+
+  links.forEach((link) => {
+    link.setAttribute("href", url);
+  });
+
+  return () => {
+    links.forEach((link, index) => {
+      if (created) {
+        if (link.parentNode) {
+          link.parentNode.removeChild(link);
+        }
+      } else if (previous[index] === null) {
+        link.removeAttribute("href");
+      } else {
+        link.setAttribute("href", previous[index]);
+      }
+    });
+  };
+}
+
+/* =====================================================
+   CONTACT PAGE
+===================================================== */
 
 export default function Contact() {
   const navigate = useNavigate();
@@ -27,17 +121,93 @@ export default function Contact() {
 
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  /* =====================================================
+     SEO
+  ===================================================== */
 
-    setFormData((prev) => ({
-      ...prev,
+  useEffect(() => {
+    const undos = [];
+    const previousTitle = document.title;
+
+    document.title = SEO_TITLE;
+
+    undos.push(
+      setMeta("name", "description", SEO_DESCRIPTION)
+    );
+
+    undos.push(
+      setMeta("name", "keywords", SEO_KEYWORDS)
+    );
+
+    undos.push(
+      setMeta("name", "robots", "index, follow")
+    );
+
+    undos.push(
+      setMeta("name", "author", "RentoCar")
+    );
+
+    undos.push(
+      setCanonical(PAGE_URL)
+    );
+
+    undos.push(
+      setMeta("property", "og:title", SEO_TITLE)
+    );
+
+    undos.push(
+      setMeta("property", "og:description", SEO_DESCRIPTION)
+    );
+
+    undos.push(
+      setMeta("property", "og:url", PAGE_URL)
+    );
+
+    undos.push(
+      setMeta("property", "og:type", "website")
+    );
+
+    undos.push(
+      setMeta("property", "og:site_name", "RentoCar")
+    );
+
+    undos.push(
+      setMeta("property", "og:locale", "en_IN")
+    );
+
+    undos.push(
+      setMeta("name", "twitter:card", "summary")
+    );
+
+    undos.push(
+      setMeta("name", "twitter:title", SEO_TITLE)
+    );
+
+    undos.push(
+      setMeta("name", "twitter:description", SEO_DESCRIPTION)
+    );
+
+    return () => {
+      undos.reverse().forEach((undo) => undo());
+      document.title = previousTitle;
+    };
+  }, []);
+
+  /* =====================================================
+     FORM HANDLING
+  ===================================================== */
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormData((previous) => ({
+      ...previous,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     setSubmitted(true);
 
@@ -55,25 +225,18 @@ export default function Contact() {
   };
 
   return (
-    <div className="contact-page">
-
-      {/* =====================================================
-          SEO
-      ===================================================== */}
-
-      <SEO
-        title="Contact RentoCar | Self Drive Car Rental Support in Pune"
-        description="Get in touch with RentoCar for booking help, car availability or general questions. Call, email or send us a message — our team is here to help."
-        canonical="/contact"
-      />
+    <main className="contact-page">
 
       {/* =====================================================
           HERO
       ===================================================== */}
 
-      <section className="contact-hero">
-
+      <section
+        className="contact-hero"
+        aria-labelledby="contact-page-title"
+      >
         <div className="contact-hero-glow contact-glow-one"></div>
+
         <div className="contact-hero-glow contact-glow-two"></div>
 
         <div className="contact-container">
@@ -81,23 +244,30 @@ export default function Contact() {
           <div className="contact-hero-content">
 
             <span className="contact-eyebrow">
-              Contact RentoCar
+              Contact RentoCar Pune
             </span>
 
-            <h1>
-              Let's talk about
-              <span> your journey.</span>
+            <h1 id="contact-page-title">
+              Contact RentoCar,
+              <span>
+                {" "}
+                your Pune self-drive car rental.
+              </span>
             </h1>
 
             <p>
               Have a question about a car, booking or your
-              next trip? Our team is here to help make your
-              RentoCar experience simple and stress-free.
+              next trip in Pune? Our team is here to help make
+              your self-drive car rental experience simple and
+              stress-free.
             </p>
 
             <div className="contact-hero-badge">
 
-              <span className="contact-online-dot"></span>
+              <span
+                className="contact-online-dot"
+                aria-hidden="true"
+              ></span>
 
               <span>
                 We're here to help
@@ -107,8 +277,10 @@ export default function Contact() {
 
           </div>
 
-          <div className="contact-hero-mark">
-
+          <div
+            className="contact-hero-mark"
+            aria-hidden="true"
+          >
             <div className="contact-mark-ring"></div>
 
             <div className="contact-mark-inner">
@@ -127,20 +299,19 @@ export default function Contact() {
               </small>
 
             </div>
-
           </div>
 
         </div>
-
       </section>
-
 
       {/* =====================================================
           CONTACT CONTENT
       ===================================================== */}
 
-      <section className="contact-main">
-
+      <section
+        className="contact-main"
+        aria-labelledby="contact-help-title"
+      >
         <div className="contact-container">
 
           <div className="contact-main-grid">
@@ -167,7 +338,10 @@ export default function Contact() {
 
               <h2>
                 We're always
-                <span> happy to help.</span>
+                <span>
+                  {" "}
+                  happy to help.
+                </span>
               </h2>
 
               <p className="contact-intro-text">
@@ -176,12 +350,14 @@ export default function Contact() {
                 want to know more about RentoCar, reach out to us.
               </p>
 
-
-              {/* PHONE */}
+              {/* =================================================
+                  PHONE
+              ================================================= */}
 
               <a
                 href="tel:+917020148417"
                 className="contact-info-card"
+                aria-label="Call RentoCar at +91 7020148417"
               >
 
                 <span className="contact-info-icon">
@@ -208,12 +384,14 @@ export default function Contact() {
 
               </a>
 
-
-              {/* EMAIL */}
+              {/* =================================================
+                  EMAIL
+              ================================================= */}
 
               <a
                 href="mailto:support@rentocarpune.com"
                 className="contact-info-card"
+                aria-label="Email RentoCar support"
               >
 
                 <span className="contact-info-icon">
@@ -240,8 +418,9 @@ export default function Contact() {
 
               </a>
 
-
-              {/* LOCATION */}
+              {/* =================================================
+                  LOCATION
+              ================================================= */}
 
               <div className="contact-info-card contact-info-static">
 
@@ -267,8 +446,9 @@ export default function Contact() {
 
               </div>
 
-
-              {/* HOURS */}
+              {/* =================================================
+                  HOURS
+              ================================================= */}
 
               <div className="contact-hours">
 
@@ -296,7 +476,6 @@ export default function Contact() {
 
             </div>
 
-
             {/* =================================================
                 CONTACT FORM
             ================================================= */}
@@ -309,9 +488,12 @@ export default function Contact() {
                   SEND A MESSAGE
                 </span>
 
-                <h2>
+                <h2 id="contact-help-title">
                   How can we
-                  <em> help?</em>
+                  <em>
+                    {" "}
+                    help?
+                  </em>
                 </h2>
 
                 <p>
@@ -321,10 +503,13 @@ export default function Contact() {
 
               </div>
 
-
               {submitted ? (
 
-                <div className="contact-success">
+                <div
+                  className="contact-success"
+                  role="status"
+                  aria-live="polite"
+                >
 
                   <div className="contact-success-icon">
                     <CheckCircle2 size={35} />
@@ -355,7 +540,7 @@ export default function Contact() {
                   onSubmit={handleSubmit}
                 >
 
-                  {/* NAME */}
+                  {/* NAME + EMAIL */}
 
                   <div className="contact-form-row">
 
@@ -372,13 +557,11 @@ export default function Contact() {
                         placeholder="Enter your name"
                         value={formData.name}
                         onChange={handleChange}
+                        autoComplete="name"
                         required
                       />
 
                     </div>
-
-
-                    {/* EMAIL */}
 
                     <div className="contact-field">
 
@@ -393,6 +576,7 @@ export default function Contact() {
                         placeholder="you@example.com"
                         value={formData.email}
                         onChange={handleChange}
+                        autoComplete="email"
                         required
                       />
 
@@ -400,8 +584,7 @@ export default function Contact() {
 
                   </div>
 
-
-                  {/* PHONE */}
+                  {/* PHONE + SUBJECT */}
 
                   <div className="contact-form-row">
 
@@ -418,12 +601,10 @@ export default function Contact() {
                         placeholder="+91 XXXXX XXXXX"
                         value={formData.phone}
                         onChange={handleChange}
+                        autoComplete="tel"
                       />
 
                     </div>
-
-
-                    {/* SUBJECT */}
 
                     <div className="contact-field">
 
@@ -469,7 +650,6 @@ export default function Contact() {
 
                   </div>
 
-
                   {/* MESSAGE */}
 
                   <div className="contact-field">
@@ -490,21 +670,28 @@ export default function Contact() {
 
                   </div>
 
-
                   {/* SUBMIT */}
 
                   <button
                     type="submit"
                     className="contact-submit-btn"
                   >
-                    Send Message
+                    <span>
+                      Send Message
+                    </span>
+
                     <ArrowUpRight size={18} />
+
                   </button>
 
-
                   <p className="contact-form-note">
+
                     <CheckCircle2 size={13} />
-                    Your information is kept private and secure.
+
+                    <span>
+                      Your information is kept private and secure.
+                    </span>
+
                   </p>
 
                 </form>
@@ -516,16 +703,16 @@ export default function Contact() {
           </div>
 
         </div>
-
       </section>
-
 
       {/* =====================================================
           QUICK HELP
       ===================================================== */}
 
-      <section className="contact-help">
-
+      <section
+        className="contact-help"
+        aria-labelledby="quick-help-title"
+      >
         <div className="contact-container">
 
           <div className="contact-help-heading">
@@ -544,17 +731,21 @@ export default function Contact() {
 
             </div>
 
-            <h2>
+            <h2 id="quick-help-title">
               Looking for something
-              <span> specific?</span>
+              <span>
+                {" "}
+                specific?
+              </span>
             </h2>
 
           </div>
 
-
           <div className="contact-help-grid">
 
-            {/* BOOKING */}
+            {/* =================================================
+                BOOKING
+            ================================================= */}
 
             <button
               type="button"
@@ -583,12 +774,14 @@ export default function Contact() {
 
             </button>
 
-
-            {/* MESSAGE */}
+            {/* =================================================
+                MESSAGE
+            ================================================= */}
 
             <a
               href="mailto:support@rentocarpune.com"
               className="contact-help-card"
+              aria-label="Email RentoCar support"
             >
 
               <span className="contact-help-icon">
@@ -612,8 +805,9 @@ export default function Contact() {
 
             </a>
 
-
-            {/* LOCATION */}
+            {/* =================================================
+                LOCATION
+            ================================================= */}
 
             <div className="contact-help-card contact-help-static">
 
@@ -639,9 +833,7 @@ export default function Contact() {
           </div>
 
         </div>
-
       </section>
-
 
       {/* =====================================================
           FINAL CTA
@@ -661,7 +853,10 @@ export default function Contact() {
 
             <h2>
               Let's get you
-              <em> moving.</em>
+              <em>
+                {" "}
+                moving.
+              </em>
             </h2>
 
             <p>
@@ -674,8 +869,12 @@ export default function Contact() {
               className="contact-final-btn"
               onClick={() => navigate("/cars")}
             >
-              Explore Cars
+              <span>
+                Explore Cars
+              </span>
+
               <ArrowUpRight size={18} />
+
             </button>
 
           </div>
@@ -684,6 +883,6 @@ export default function Contact() {
 
       </section>
 
-    </div>
+    </main>
   );
 }

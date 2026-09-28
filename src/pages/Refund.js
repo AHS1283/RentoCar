@@ -1,19 +1,127 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Refund.css";
 
+/* =====================================================
+   SEO CONTENT
+===================================================== */
+
+const SITE_URL = "https://www.rentocar.in";
+const PAGE_URL = `${SITE_URL}/refund`;
+
+const SEO_TITLE =
+  "Cancellation & Refund Policy | Self Drive Car Rental Pune | RentoCar";
+
+const SEO_DESCRIPTION =
+  "Understand RentoCar's cancellation and refund policy for self-drive car rental in Pune: cancellation before pickup, no-show, booking changes and refund processing.";
+
+const SEO_KEYWORDS =
+  "RentoCar cancellation policy, RentoCar refund policy, car rental cancellation Pune, self drive car rental refund Pune, car rental booking change Pune";
+
+/* =====================================================
+   HEAD HELPERS
+   Update every matching tag (including static ones
+   from index.html) and return an undo function.
+===================================================== */
+
+function setMeta(attr, key, content) {
+  let tags = Array.from(
+    document.head.querySelectorAll(`meta[${attr}="${key}"]`)
+  );
+
+  const created = tags.length === 0;
+
+  if (created) {
+    const tag = document.createElement("meta");
+    tag.setAttribute(attr, key);
+    document.head.appendChild(tag);
+    tags = [tag];
+  }
+
+  const previous = tags.map((tag) => tag.getAttribute("content"));
+
+  tags.forEach((tag) => tag.setAttribute("content", content));
+
+  return () => {
+    tags.forEach((tag, i) => {
+      if (created) {
+        if (tag.parentNode) tag.parentNode.removeChild(tag);
+      } else if (previous[i] === null) {
+        tag.removeAttribute("content");
+      } else {
+        tag.setAttribute("content", previous[i]);
+      }
+    });
+  };
+}
+
+function setCanonical(url) {
+  let links = Array.from(
+    document.head.querySelectorAll('link[rel="canonical"]')
+  );
+
+  const created = links.length === 0;
+
+  if (created) {
+    const link = document.createElement("link");
+    link.setAttribute("rel", "canonical");
+    document.head.appendChild(link);
+    links = [link];
+  }
+
+  const previous = links.map((link) => link.getAttribute("href"));
+
+  links.forEach((link) => link.setAttribute("href", url));
+
+  return () => {
+    links.forEach((link, i) => {
+      if (created) {
+        if (link.parentNode) link.parentNode.removeChild(link);
+      } else if (previous[i] === null) {
+        link.removeAttribute("href");
+      } else {
+        link.setAttribute("href", previous[i]);
+      }
+    });
+  };
+}
+
 export default function Refund() {
+  useEffect(() => {
+    const undos = [];
+    const prevTitle = document.title;
+
+    document.title = SEO_TITLE;
+
+    undos.push(setMeta("name", "description", SEO_DESCRIPTION));
+    undos.push(setMeta("name", "keywords", SEO_KEYWORDS));
+    undos.push(setMeta("name", "robots", "index, follow"));
+    undos.push(setMeta("name", "author", "RentoCar"));
+    undos.push(setCanonical(PAGE_URL));
+
+    undos.push(setMeta("property", "og:title", SEO_TITLE));
+    undos.push(setMeta("property", "og:description", SEO_DESCRIPTION));
+    undos.push(setMeta("property", "og:url", PAGE_URL));
+    undos.push(setMeta("property", "og:type", "website"));
+
+    return () => {
+      undos.reverse().forEach((undo) => undo());
+      document.title = prevTitle;
+    };
+  }, []);
+
   return (
     <main className="refund-page">
       <section className="refund-hero">
         <div className="refund-hero-content">
           <span className="refund-eyebrow">RENTOCAR SUPPORT</span>
 
-          <h1>Cancellation & Refund</h1>
+          <h1>Car Rental Cancellation & Refund Policy in Pune</h1>
 
           <p>
             Understand the general cancellation, refund and booking
-            modification process for RentoCar rentals.
+            modification process for RentoCar self-drive car rentals
+            in Pune.
           </p>
 
           <div className="refund-breadcrumb">

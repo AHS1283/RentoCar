@@ -4,13 +4,20 @@ import { Helmet } from "react-helmet-async";
 const SEO = ({
   title = "RentoCar – Self Drive Car Rental",
   description = "Rent reliable self-drive cars with RentoCar. Choose your car, book online, and start your journey.",
+  keywords = "",
   canonical = "/",
   image = "/logo.png",
+  author = "RentoCar",
+  publisher = "RentoCar",
+  jsonLd = null,
   noIndex = false,
 }) => {
   // IMPORTANT:
   // Replace this with your real deployed RentoCar domain
-  const siteUrl = "https://yourdomain.com";
+  // (or set REACT_APP_SITE_URL in your .env file)
+  const siteUrl =
+    process.env.REACT_APP_SITE_URL ||
+    "https://yourdomain.com";
 
   // Make sure canonical always starts with /
   const normalizedCanonical = canonical.startsWith("/")
@@ -35,6 +42,23 @@ const SEO = ({
       <meta
         name="description"
         content={description}
+      />
+
+      {keywords && (
+        <meta
+          name="keywords"
+          content={keywords}
+        />
+      )}
+
+      <meta
+        name="author"
+        content={author}
+      />
+
+      <meta
+        name="publisher"
+        content={publisher}
       />
 
       <meta
@@ -109,6 +133,16 @@ const SEO = ({
         name="twitter:image"
         content={imageUrl}
       />
+
+      {/* =========================
+          STRUCTURED DATA (JSON-LD)
+      ========================= */}
+
+      {jsonLd && (
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
+      )}
     </Helmet>
   );
 };

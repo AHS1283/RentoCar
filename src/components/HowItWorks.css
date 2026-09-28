@@ -28,6 +28,14 @@
 
   font-family: "Times New Roman", Times, serif;
   overflow: hidden;
+
+  /*
+    Keeps this section clear of the sticky navbar
+    (78–82px tall) when the header links/buttons
+    scroll straight to it, from this page or after
+    navigating here from another page.
+  */
+  scroll-margin-top: 90px;
 }
 
 .gm-container {

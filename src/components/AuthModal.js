@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import {
   RecaptchaVerifier,
@@ -490,9 +489,9 @@ export default function AuthModal({ isOpen, onClose }) {
                   Welcome to Rentocar
                 </span>
 
-                <h1>
+                <h2>
                   Login or Sign Up
-                </h1>
+                </h2>
 
                 <p>
                   Enter your mobile number
@@ -618,9 +617,9 @@ export default function AuthModal({ isOpen, onClose }) {
                   Almost there
                 </span>
 
-                <h1>
+                <h2>
                   Verify your number
-                </h1>
+                </h2>
 
                 <p>
                   Enter the OTP sent to
@@ -708,4 +707,3 @@ export default function AuthModal({ isOpen, onClose }) {
     </div>
   );
 }
-

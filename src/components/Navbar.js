@@ -19,7 +19,6 @@ import {
   Phone,
   LogOut,
   BookOpen,
-  Smartphone,
   HelpCircle,
   ChevronDown,
   ArrowRight,
@@ -29,6 +28,58 @@ import { useAuth } from "../context/AuthContext";
 import AuthModal from "./AuthModal";
 
 import "./Navbar.css";
+
+/* =====================================================
+   GET THE APP ICON
+   Custom phone-with-download-arrow glyph — reads more
+   clearly as "get the app" than a plain phone outline.
+   Uses currentColor so it follows the button's hover
+   color automatically.
+===================================================== */
+
+function AppDownloadIcon({ size = 18 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <rect
+        x="6.25"
+        y="2"
+        width="11.5"
+        height="20"
+        rx="3.2"
+        stroke="currentColor"
+        strokeWidth="1.6"
+      />
+
+      <path
+        d="M10 20.1h4"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M12 6.3v6.6"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M9.1 10.4 12 13.3l2.9-2.9"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export default function Navbar() {
   const auth = useAuth();
@@ -149,6 +200,54 @@ export default function Navbar() {
   }, [drawerOpen]);
 
   /* =====================================================
+     SCROLL TO SECTION AFTER NAVIGATION
+     Runs whenever we land on "/" with a pending
+     scrollTo request in the navigation state. This
+     replaces the old fixed setTimeout, which raced
+     against the page's own render and often lost.
+  ===================================================== */
+
+  useEffect(() => {
+    const targetId = location.state?.scrollTo;
+
+    if (location.pathname !== "/" || !targetId) {
+      return;
+    }
+
+    let attempts = 0;
+
+    const tryScroll = () => {
+      const section = document.getElementById(targetId);
+
+      if (section) {
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+        return;
+      }
+
+      // Section not mounted yet — keep retrying briefly
+      // instead of guessing a fixed delay.
+      attempts += 1;
+
+      if (attempts < 20) {
+        requestAnimationFrame(tryScroll);
+      }
+    };
+
+    requestAnimationFrame(tryScroll);
+
+    // Clear the pending scroll from history state so
+    // navigating back here later doesn't re-trigger it.
+    navigate(location.pathname, {
+      replace: true,
+      state: {},
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname, location.state]);
+
+  /* =====================================================
      DRAWER
   ===================================================== */
 
@@ -196,6 +295,9 @@ export default function Navbar() {
 
   /* =====================================================
      SCROLL TO SECTION
+     If already on "/", scroll immediately. Otherwise
+     navigate home and let the effect above finish the
+     scroll once the target section actually exists.
   ===================================================== */
 
   const scrollToSection = (sectionId) => {
@@ -216,27 +318,22 @@ export default function Navbar() {
       return;
     }
 
-    navigate("/");
-
-    setTimeout(() => {
-      const section =
-        document.getElementById(sectionId);
-
-      if (section) {
-        section.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    }, 500);
+    navigate("/", {
+      state: { scrollTo: sectionId },
+    });
   };
 
   /* =====================================================
      DOWNLOAD APP
+     Goes straight to the dedicated download page
+     instead of scrolling to a homepage section.
   ===================================================== */
 
   const handleDownloadApp = () => {
-    scrollToSection("get-app");
+    closeDrawer();
+    setProfileOpen(false);
+
+    navigate("/get-app");
   };
 
   /* =====================================================
@@ -431,10 +528,7 @@ export default function Navbar() {
               className="navbar-app-button"
               onClick={handleDownloadApp}
             >
-              <Smartphone
-                size={18}
-                strokeWidth={1.9}
-              />
+              <AppDownloadIcon size={18} />
 
               <span>
                 Get the App
@@ -915,7 +1009,7 @@ export default function Navbar() {
                 onClick={handleDownloadApp}
               >
                 <span className="drawer-main-icon">
-                  <Smartphone size={20} />
+                  <AppDownloadIcon size={20} />
                 </span>
 
                 <span>

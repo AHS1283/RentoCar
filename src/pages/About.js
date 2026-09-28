@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ArrowUpRight,
   CarFront,
@@ -15,8 +14,115 @@ import {
 import { useNavigate } from "react-router-dom";
 import "./About.css";
 
+/* =====================================================
+   SEO CONTENT
+===================================================== */
+
+const SITE_URL = "https://www.rentocar.in";
+const PAGE_URL = `${SITE_URL}/about`;
+
+const SEO_TITLE =
+  "About RentoCar | Self-Drive Car Rental in Pune";
+
+const SEO_DESCRIPTION =
+  "RentoCar is a Pune-based self-drive car rental service. Learn about our mission, our values and how we make renting a car simple, flexible and reliable.";
+
+const SEO_KEYWORDS =
+  "about RentoCar, RentoCar Pune, self drive car rental Pune, car rental company Pune, rent a car in Pune, self drive cars Pune";
+
+/* =====================================================
+   HEAD HELPERS
+   Update every matching tag (including static ones
+   from index.html) and return an undo function.
+===================================================== */
+
+function setMeta(attr, key, content) {
+  let tags = Array.from(
+    document.head.querySelectorAll(`meta[${attr}="${key}"]`)
+  );
+
+  const created = tags.length === 0;
+
+  if (created) {
+    const tag = document.createElement("meta");
+    tag.setAttribute(attr, key);
+    document.head.appendChild(tag);
+    tags = [tag];
+  }
+
+  const previous = tags.map((tag) => tag.getAttribute("content"));
+
+  tags.forEach((tag) => tag.setAttribute("content", content));
+
+  return () => {
+    tags.forEach((tag, i) => {
+      if (created) {
+        if (tag.parentNode) tag.parentNode.removeChild(tag);
+      } else if (previous[i] === null) {
+        tag.removeAttribute("content");
+      } else {
+        tag.setAttribute("content", previous[i]);
+      }
+    });
+  };
+}
+
+function setCanonical(url) {
+  let links = Array.from(
+    document.head.querySelectorAll('link[rel="canonical"]')
+  );
+
+  const created = links.length === 0;
+
+  if (created) {
+    const link = document.createElement("link");
+    link.setAttribute("rel", "canonical");
+    document.head.appendChild(link);
+    links = [link];
+  }
+
+  const previous = links.map((link) => link.getAttribute("href"));
+
+  links.forEach((link) => link.setAttribute("href", url));
+
+  return () => {
+    links.forEach((link, i) => {
+      if (created) {
+        if (link.parentNode) link.parentNode.removeChild(link);
+      } else if (previous[i] === null) {
+        link.removeAttribute("href");
+      } else {
+        link.setAttribute("href", previous[i]);
+      }
+    });
+  };
+}
+
 export default function About() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const undos = [];
+    const prevTitle = document.title;
+
+    document.title = SEO_TITLE;
+
+    undos.push(setMeta("name", "description", SEO_DESCRIPTION));
+    undos.push(setMeta("name", "keywords", SEO_KEYWORDS));
+    undos.push(setMeta("name", "robots", "index, follow"));
+    undos.push(setMeta("name", "author", "RentoCar"));
+    undos.push(setCanonical(PAGE_URL));
+
+    undos.push(setMeta("property", "og:title", SEO_TITLE));
+    undos.push(setMeta("property", "og:description", SEO_DESCRIPTION));
+    undos.push(setMeta("property", "og:url", PAGE_URL));
+    undos.push(setMeta("property", "og:type", "website"));
+
+    return () => {
+      undos.reverse().forEach((undo) => undo());
+      document.title = prevTitle;
+    };
+  }, []);
 
   const goToCars = () => {
     navigate("/cars");
@@ -52,10 +158,11 @@ export default function About() {
             </h1>
 
             <p>
-              RentoCar is built to make self-drive car rentals
-              simple, flexible and reliable. Whether it is a
-              quick city drive, a weekend escape or a long
-              road trip, we make getting behind the wheel easy.
+              RentoCar is a Pune-based self-drive car rental
+              service built to make renting simple, flexible
+              and reliable. Whether it is a quick city drive,
+              a weekend escape or a long road trip, we make
+              getting behind the wheel easy.
             </p>
 
             <div className="about-hero-actions">
@@ -655,4 +762,3 @@ export default function About() {
     </div>
   );
 }
-

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -176,9 +175,9 @@ export default function Account() {
 
             {/* HEADER */}
 
-            <div className="account-header">
+            <h1 className="account-header">
               MY ACCOUNT
-            </div>
+            </h1>
 
 
             {/* ACCOUNT DETAILS */}
@@ -318,4 +317,3 @@ export default function Account() {
     </>
   );
 }
-

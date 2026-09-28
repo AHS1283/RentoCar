@@ -8,6 +8,7 @@ import {
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import SocialSidebar from "./components/SocialSidebar";
 
 /* =====================================================
    MAIN WEBSITE PAGES
@@ -21,6 +22,7 @@ import Booking from "./pages/Booking";
 import MyBookings from "./pages/MyBookings";
 import BecomeHost from "./pages/BecomeHost";
 import Account from "./pages/Account";
+import AppDownload from "./pages/AppDownload";
 
 /* =====================================================
    ABOUT / CONTACT PAGES
@@ -140,6 +142,14 @@ function AppContent() {
       {!isAdminPage && <Navbar />}
 
       {/* =================================================
+          GLOBAL SOCIAL SIDEBAR
+          
+          Hidden on admin pages
+      ================================================= */}
+
+      {!isAdminPage && <SocialSidebar />}
+
+      {/* =================================================
           PAGE CONTENT
       ================================================= */}
 
@@ -205,6 +215,15 @@ function AppContent() {
           <Route
             path="/become-host"
             element={<BecomeHost />}
+          />
+
+          {/* =================================================
+              GET THE APP
+          ================================================= */}
+
+          <Route
+            path="/get-app"
+            element={<AppDownload />}
           />
 
           {/* =================================================

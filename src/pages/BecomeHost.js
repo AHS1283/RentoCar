@@ -1,12 +1,21 @@
-
-import React, {
-  useEffect,
-  useState,
-} from "react";
-
-import SEO from "../components/SEO";
-
+import React, { useEffect, useState } from "react";
 import "./BecomeHost.css";
+
+/* =====================================================
+   SCREEN READER ONLY
+===================================================== */
+
+const srOnly = {
+  position: "absolute",
+  width: "1px",
+  height: "1px",
+  padding: 0,
+  margin: "-1px",
+  overflow: "hidden",
+  clip: "rect(0, 0, 0, 0)",
+  whiteSpace: "nowrap",
+  border: 0,
+};
 
 /* =====================================================
    BENEFITS
@@ -103,7 +112,7 @@ const policies = [
 
 const faqs = [
   {
-    category: "Getting Started",
+    category: "Getting Started as a Host",
     questions: [
       {
         q: "How do I list my car on RentoCar?",
@@ -120,7 +129,7 @@ const faqs = [
     ],
   },
   {
-    category: "Earnings & Payments",
+    category: "Host Earnings & Payments",
     questions: [
       {
         q: "How much can I earn by listing my car?",
@@ -137,7 +146,7 @@ const faqs = [
     ],
   },
   {
-    category: "Car Safety & Security",
+    category: "Host Car Safety & Security",
     questions: [
       {
         q: "What safety measures are available for hosts?",
@@ -154,7 +163,7 @@ const faqs = [
     ],
   },
   {
-    category: "Car Maintenance",
+    category: "Car Maintenance for Hosts",
     questions: [
       {
         q: "Who is responsible for regular maintenance?",
@@ -167,7 +176,7 @@ const faqs = [
     ],
   },
   {
-    category: "Legal & Compliance",
+    category: "Legal & Compliance for Hosts",
     questions: [
       {
         q: "What type of cars can be listed?",
@@ -182,17 +191,89 @@ const faqs = [
 ];
 
 /* =====================================================
+   SEO
+===================================================== */
+
+const SEO_TITLE =
+  "Become a Car Host | Earn Money Renting Your Car – Rentocar";
+
+const SEO_DESCRIPTION =
+  "Become a Rentocar host and earn extra income by renting out your car. List your car, set your own availability and estimate your monthly earnings.";
+
+const SEO_KEYWORDS = [
+  "become a car host",
+  "rent out my car",
+  "earn money renting car",
+  "list my car for rent",
+  "car sharing India",
+  "car owner income",
+  "rent out car Pune",
+  "self drive car host",
+  "Rentocar host",
+].join(", ");
+
+/* =====================================================
+   FAQ JSON-LD
+===================================================== */
+
+const SEO_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.flatMap((group) =>
+    group.questions.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    }))
+  ),
+};
+
+/* =====================================================
+   META HELPERS
+===================================================== */
+
+function setMeta(attr, key, content) {
+  if (!content) return;
+
+  let tag = document.head.querySelector(
+    `meta[${attr}="${key}"]`
+  );
+
+  if (!tag) {
+    tag = document.createElement("meta");
+    tag.setAttribute(attr, key);
+    document.head.appendChild(tag);
+  }
+
+  tag.setAttribute("content", content);
+}
+
+function setCanonical(url) {
+  let link = document.head.querySelector(
+    'link[rel="canonical"]'
+  );
+
+  if (!link) {
+    link = document.createElement("link");
+    link.setAttribute("rel", "canonical");
+    document.head.appendChild(link);
+  }
+
+  link.setAttribute("href", url);
+}
+
+/* =====================================================
    ANIMATED NUMBER
 ===================================================== */
 
-function AnimatedNumber({
-  value,
-  suffix = "",
-}) {
+function AnimatedNumber({ value, suffix = "" }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    let start = 0;
+    let frameId;
 
     const duration = 1200;
     const startTime = performance.now();
@@ -203,21 +284,22 @@ function AnimatedNumber({
         1
       );
 
-      const ease =
-        1 - Math.pow(1 - progress, 3);
+      const ease = 1 - Math.pow(1 - progress, 3);
 
-      start = Math.floor(
-        value * ease
-      );
+      const next = Number.isInteger(value)
+        ? Math.floor(value * ease)
+        : Number((value * ease).toFixed(1));
 
-      setCount(start);
+      setCount(next);
 
       if (progress < 1) {
-        requestAnimationFrame(animate);
+        frameId = requestAnimationFrame(animate);
       }
     };
 
-    requestAnimationFrame(animate);
+    frameId = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(frameId);
   }, [value]);
 
   return (
@@ -232,10 +314,7 @@ function AnimatedNumber({
    FAQ ITEM
 ===================================================== */
 
-function FAQItem({
-  question,
-  answer,
-}) {
+function FAQItem({ question, answer }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -247,14 +326,10 @@ function FAQItem({
       <button
         type="button"
         className="host-faq-question"
-        onClick={() =>
-          setOpen(!open)
-        }
+        onClick={() => setOpen(!open)}
         aria-expanded={open}
       >
-        <span>
-          {question}
-        </span>
+        <span>{question}</span>
 
         <span className="host-faq-icon">
           {open ? "−" : "+"}
@@ -262,13 +337,31 @@ function FAQItem({
       </button>
 
       <div className="host-faq-answer">
-        <p>
-          {answer}
-        </p>
+        <p>{answer}</p>
       </div>
     </div>
   );
 }
+
+/* =====================================================
+   RENTAL RATES
+===================================================== */
+
+const rates = {
+  "Maruti Swift": 1450,
+  "Hyundai Creta": 2200,
+  "Tata Nexon": 1750,
+  "Mahindra Scorpio": 2800,
+  "Kia Seltos": 2300,
+};
+
+const cityMultiplier = {
+  Mumbai: 1,
+  Pune: 0.9,
+  Delhi: 1.05,
+  Bangalore: 1.1,
+  Hyderabad: 0.9,
+};
 
 /* =====================================================
    BECOME HOST PAGE
@@ -285,56 +378,145 @@ export default function BecomeHost() {
     useState(15);
 
   /* ===================================================
-     RENTAL RATES
+     SEO
   =================================================== */
 
-  const rates = {
-    "Maruti Swift": 1450,
-    "Hyundai Creta": 2200,
-    "Tata Nexon": 1750,
-    "Mahindra Scorpio": 2800,
-    "Kia Seltos": 2300,
-  };
+  useEffect(() => {
+    const pageUrl =
+      `${window.location.origin}/become-host`;
 
-  /* ===================================================
-     CITY MULTIPLIER
-  =================================================== */
+    document.title = SEO_TITLE;
 
-  const cityMultiplier = {
-    Mumbai: 1,
-    Pune: 0.9,
-    Delhi: 1.05,
-    Bangalore: 1.1,
-    Hyderabad: 0.9,
-  };
+    setMeta(
+      "name",
+      "description",
+      SEO_DESCRIPTION
+    );
+
+    setMeta(
+      "name",
+      "keywords",
+      SEO_KEYWORDS
+    );
+
+    setMeta(
+      "name",
+      "author",
+      "Rentocar"
+    );
+
+    setMeta(
+      "name",
+      "publisher",
+      "Rentocar"
+    );
+
+    setMeta(
+      "name",
+      "robots",
+      "index, follow"
+    );
+
+    setCanonical(pageUrl);
+
+    /* Open Graph */
+
+    setMeta(
+      "property",
+      "og:title",
+      SEO_TITLE
+    );
+
+    setMeta(
+      "property",
+      "og:description",
+      SEO_DESCRIPTION
+    );
+
+    setMeta(
+      "property",
+      "og:type",
+      "website"
+    );
+
+    setMeta(
+      "property",
+      "og:url",
+      pageUrl
+    );
+
+    setMeta(
+      "property",
+      "og:site_name",
+      "Rentocar"
+    );
+
+    setMeta(
+      "property",
+      "og:locale",
+      "en_IN"
+    );
+
+    /* Twitter */
+
+    setMeta(
+      "name",
+      "twitter:card",
+      "summary"
+    );
+
+    setMeta(
+      "name",
+      "twitter:title",
+      SEO_TITLE
+    );
+
+    setMeta(
+      "name",
+      "twitter:description",
+      SEO_DESCRIPTION
+    );
+
+    /* JSON-LD */
+
+    const script =
+      document.createElement("script");
+
+    script.type =
+      "application/ld+json";
+
+    script.text =
+      JSON.stringify(SEO_JSON_LD);
+
+    document.head.appendChild(script);
+
+    return () => {
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
+    };
+  }, []);
 
   /* ===================================================
      ESTIMATED INCOME
   =================================================== */
 
-  const estimatedIncome =
-    Math.round(
-      rates[carModel] *
-        days *
-        cityMultiplier[city]
-    );
+  const estimatedIncome = Math.round(
+    rates[carModel] *
+      days *
+      cityMultiplier[city]
+  );
+
+  /* ===================================================
+     RENDER
+  =================================================== */
 
   return (
     <div className="become-host-page">
 
       {/* =================================================
-          SEO
-      ================================================= */}
-
-      <SEO
-        title="Become a Host | Earn Money by Renting Your Car | RentoCar"
-        description="Become a RentoCar host and earn extra income by renting out your car. List your car, choose your availability and start earning from your vehicle."
-        canonical="/become-host"
-      />
-
-      {/* =========================================
           HERO
-      ========================================= */}
+      ================================================= */}
 
       <section className="host-hero">
 
@@ -352,6 +534,12 @@ export default function BecomeHost() {
               Into{" "}
               <span>
                 Extra Income.
+              </span>
+
+              <span style={srOnly}>
+                {" "}
+                – Become a Car Host and Rent Out
+                Your Car with Rentocar
               </span>
             </h1>
 
@@ -471,9 +659,9 @@ export default function BecomeHost() {
 
       </section>
 
-      {/* =========================================
+      {/* =================================================
           BENEFITS
-      ========================================= */}
+      ================================================= */}
 
       <section
         className="host-benefits"
@@ -489,10 +677,10 @@ export default function BecomeHost() {
             </span>
 
             <h2>
-              Unlock passive income
+              Rent out your car and
               <br />
               <span>
-                without the hassle.
+                unlock passive income.
               </span>
             </h2>
 
@@ -512,7 +700,8 @@ export default function BecomeHost() {
                   className="host-benefit-card"
                   key={benefit.title}
                   style={{
-                    "--delay": `${index * 0.08}s`,
+                    "--delay":
+                      `${index * 0.08}s`,
                   }}
                 >
 
@@ -538,9 +727,9 @@ export default function BecomeHost() {
 
       </section>
 
-      {/* =========================================
+      {/* =================================================
           CALCULATOR
-      ========================================= */}
+      ================================================= */}
 
       <section
         className="host-calculator-section"
@@ -560,7 +749,7 @@ export default function BecomeHost() {
               <h2>
                 See what your car
                 <br />
-                could earn.
+                could earn on rent.
               </h2>
 
               <p>
@@ -573,11 +762,12 @@ export default function BecomeHost() {
 
                 <div className="host-field">
 
-                  <label>
+                  <label htmlFor="host-car-model">
                     Car model
                   </label>
 
                   <select
+                    id="host-car-model"
                     value={carModel}
                     onChange={(e) =>
                       setCarModel(
@@ -585,27 +775,28 @@ export default function BecomeHost() {
                       )
                     }
                   >
-                    {Object.keys(
-                      rates
-                    ).map((car) => (
-                      <option
-                        key={car}
-                        value={car}
-                      >
-                        {car}
-                      </option>
-                    ))}
+                    {Object.keys(rates).map(
+                      (car) => (
+                        <option
+                          key={car}
+                          value={car}
+                        >
+                          {car}
+                        </option>
+                      )
+                    )}
                   </select>
 
                 </div>
 
                 <div className="host-field">
 
-                  <label>
+                  <label htmlFor="host-city">
                     City
                   </label>
 
                   <select
+                    id="host-city"
                     value={city}
                     onChange={(e) =>
                       setCity(
@@ -629,8 +820,10 @@ export default function BecomeHost() {
 
                 <div className="host-field host-field-full">
 
-                  <label>
-                    Available days per month
+                  <label htmlFor="host-days">
+                    <span>
+                      Available days per month
+                    </span>
 
                     <strong>
                       {days} days
@@ -638,6 +831,7 @@ export default function BecomeHost() {
                   </label>
 
                   <input
+                    id="host-days"
                     type="range"
                     min="5"
                     max="30"
@@ -652,6 +846,7 @@ export default function BecomeHost() {
                   />
 
                   <div className="host-range-labels">
+
                     <span>
                       5 days
                     </span>
@@ -659,6 +854,7 @@ export default function BecomeHost() {
                     <span>
                       30 days
                     </span>
+
                   </div>
 
                 </div>
@@ -679,7 +875,9 @@ export default function BecomeHost() {
 
               <strong>
                 ₹
-                {estimatedIncome.toLocaleString()}
+                {estimatedIncome.toLocaleString(
+                  "en-IN"
+                )}
               </strong>
 
               <p>
@@ -704,9 +902,9 @@ export default function BecomeHost() {
 
       </section>
 
-      {/* =========================================
+      {/* =================================================
           TESTIMONIALS
-      ========================================= */}
+      ================================================= */}
 
       <section className="host-testimonials">
 
@@ -719,10 +917,10 @@ export default function BecomeHost() {
             </span>
 
             <h2>
-              Real hosts.
+              Real car hosts.
               <br />
               <span>
-                Real experiences.
+                Real rental earnings.
               </span>
             </h2>
 
@@ -775,9 +973,9 @@ export default function BecomeHost() {
 
       </section>
 
-      {/* =========================================
+      {/* =================================================
           WHO CAN HOST
-      ========================================= */}
+      ================================================= */}
 
       <section className="host-eligibility">
 
@@ -814,10 +1012,10 @@ export default function BecomeHost() {
             </span>
 
             <h2>
-              Your car.
+              Rent out your car,
               <br />
               <span>
-                Your rules.
+                your rules.
               </span>
             </h2>
 
@@ -858,9 +1056,9 @@ export default function BecomeHost() {
 
       </section>
 
-      {/* =========================================
+      {/* =================================================
           POLICIES
-      ========================================= */}
+      ================================================= */}
 
       <section
         className="host-policies-section"
@@ -876,7 +1074,7 @@ export default function BecomeHost() {
             </span>
 
             <h2>
-              Clear rules.
+              Clear car hosting rules.
               <br />
               <span>
                 No surprises.
@@ -898,7 +1096,8 @@ export default function BecomeHost() {
                   className="host-benefit-card"
                   key={policy.title}
                   style={{
-                    "--delay": `${index * 0.08}s`,
+                    "--delay":
+                      `${index * 0.08}s`,
                   }}
                 >
 
@@ -924,9 +1123,9 @@ export default function BecomeHost() {
 
       </section>
 
-      {/* =========================================
+      {/* =================================================
           FAQ
-      ========================================= */}
+      ================================================= */}
 
       <section
         className="host-faq-section"
@@ -942,10 +1141,10 @@ export default function BecomeHost() {
             </span>
 
             <h2>
-              Everything you need
+              Car hosting questions,
               <br />
               <span>
-                to know.
+                answered.
               </span>
             </h2>
 
@@ -984,9 +1183,9 @@ export default function BecomeHost() {
 
       </section>
 
-      {/* =========================================
+      {/* =================================================
           FINAL CTA
-      ========================================= */}
+      ================================================= */}
 
       <section
         className="host-final-cta"
@@ -1006,7 +1205,7 @@ export default function BecomeHost() {
               <h2>
                 Your car could be
                 <br />
-                earning right now.
+                earning rental income.
               </h2>
 
               <p>
@@ -1033,4 +1232,3 @@ export default function BecomeHost() {
     </div>
   );
 }
-

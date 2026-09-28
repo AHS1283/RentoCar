@@ -31,7 +31,6 @@ export default function Footer() {
       {/* =========================================
           TOP CTA
       ========================================= */}
-
       <section className="rd-footer-top">
         <div className="rd-footer-container">
 
@@ -77,7 +76,6 @@ export default function Footer() {
       {/* =========================================
           MAIN FOOTER
       ========================================= */}
-
       <section className="rd-footer-main">
 
         <div className="rd-footer-container">
@@ -87,10 +85,8 @@ export default function Footer() {
             {/* =================================
                 BRAND
             ================================= */}
-
             <div className="rd-footer-brand">
 
-              {/* ACTUAL RENTOCAR LOGO */}
               <button
                 type="button"
                 className="rd-logo"
@@ -104,7 +100,6 @@ export default function Footer() {
                 />
               </button>
 
-
               <p className="rd-brand-description">
                 Simple, flexible and reliable
                 self-drive car rentals made
@@ -112,7 +107,7 @@ export default function Footer() {
               </p>
 
 
-              {/* SOCIAL STYLE BUTTONS */}
+              {/* SOCIALS */}
 
               <div className="rd-socials">
 
@@ -156,7 +151,6 @@ export default function Footer() {
             {/* =================================
                 COMPANY
             ================================= */}
-
             <div className="rd-footer-column">
 
               <h3>
@@ -184,14 +178,12 @@ export default function Footer() {
                 Contact Us
               </button>
 
-             
             </div>
 
 
             {/* =================================
                 SERVICES
             ================================= */}
-
             <div className="rd-footer-column">
 
               <h3>
@@ -232,7 +224,6 @@ export default function Footer() {
             {/* =================================
                 SUPPORT
             ================================= */}
-
             <div className="rd-footer-column">
 
               <h3>
@@ -273,7 +264,6 @@ export default function Footer() {
             {/* =================================
                 CONTACT
             ================================= */}
-
             <div className="rd-footer-column rd-contact-column">
 
               <h3>
@@ -328,7 +318,6 @@ export default function Footer() {
           {/* =========================================
               TRUST STRIP
           ========================================= */}
-
           <div className="rd-trust-strip">
 
             <div className="rd-trust-item">
@@ -416,7 +405,6 @@ export default function Footer() {
       {/* =========================================
           APP SECTION
       ========================================= */}
-
       <section className="rd-app-section">
 
         <div className="rd-footer-container">
@@ -432,7 +420,7 @@ export default function Footer() {
               <div>
 
                 <span>
-                  Rentocar App
+                  RentoCar App
                 </span>
 
                 <h3>
@@ -484,18 +472,42 @@ export default function Footer() {
       {/* =========================================
           BOTTOM FOOTER
       ========================================= */}
-
       <section className="rd-footer-bottom">
 
         <div className="rd-footer-container">
 
           <div className="rd-bottom-inner">
 
-            <p>
-              © {new Date().getFullYear()} RentoCar.
-              All rights reserved.
-            </p>
+            {/* COPYRIGHT + SYTEOS CREDIT */}
 
+            <div className="rd-bottom-left">
+
+              <p>
+                © {new Date().getFullYear()} RentoCar.
+                All rights reserved.
+              </p>
+
+              <div className="rd-company-credit">
+
+                <span>
+                  Website designed, developed & maintained by
+                </span>
+
+                <a
+                  href="https://syteoslabs.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Syteos Labs website"
+                >
+                  Syteos Labs
+                </a>
+
+              </div>
+
+            </div>
+
+
+            {/* BOTTOM LINKS */}
 
             <div className="rd-bottom-links">
 
@@ -522,6 +534,8 @@ export default function Footer() {
 
             </div>
 
+
+            {/* BACK TO TOP */}
 
             <button
               type="button"

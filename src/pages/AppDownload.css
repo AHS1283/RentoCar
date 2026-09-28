@@ -1,0 +1,647 @@
+/* =====================================================
+   GET THE APP PAGE
+   Theme matched to Home.css / AuthModal.css / Account.css —
+   warm paper/ink palette, true orange accent,
+   Times New Roman.
+===================================================== */
+
+.download-page {
+  --ink: #17181c;
+  --ink-soft: #5c5e66;
+  --ink-faint: #97989f;
+
+  --paper: #fafaf6;
+  --paper-deep: #efeade;
+  --panel: #f4f1e8;
+  --cream: #ffffff;
+
+  --amber: #f4791e;
+  --amber-deep: #d9600a;
+  --amber-ink: #3d1e08;
+
+  --line: rgba(20, 20, 20, 0.09);
+  --line-soft: rgba(20, 20, 20, 0.12);
+
+  min-height: calc(100vh - 72px);
+
+  padding: 16px;
+
+  background: var(--paper);
+
+  color: var(--ink);
+
+  font-family: "Times New Roman", Times, serif;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.download-hero {
+  display: grid;
+
+  grid-template-columns: 1.05fr 0.95fr;
+
+  align-items: center;
+
+  gap: 40px;
+
+  max-width: 1180px;
+
+  margin: 0 auto;
+
+  min-height: 640px;
+
+  padding: 40px 10px;
+}
+
+
+/* =====================================================
+   CONTENT SIDE
+===================================================== */
+
+.download-content {
+  max-width: 480px;
+
+  opacity: 0;
+
+  transform: translateY(22px);
+
+  animation: downloadReveal 0.7s ease forwards;
+}
+
+@keyframes downloadReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.download-label {
+  display: inline-block;
+
+  margin-bottom: 16px;
+
+  color: var(--amber-deep);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 1.4px;
+
+  text-transform: uppercase;
+}
+
+.download-content h1 {
+  margin: 0;
+
+  color: var(--ink);
+
+  font-size: clamp(36px, 4.2vw, 52px);
+
+  font-weight: 400;
+
+  line-height: 1.05;
+
+  letter-spacing: -1px;
+}
+
+.download-content h1 span {
+  color: var(--amber-deep);
+  font-style: italic;
+}
+
+.download-content > p {
+  max-width: 420px;
+
+  margin: 20px 0 0;
+
+  color: var(--ink-soft);
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+
+/* =====================================================
+   STORE BUTTONS
+===================================================== */
+
+.store-buttons {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 30px;
+}
+
+.store-btn {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px 20px;
+
+  border-radius: 10px;
+
+  background: var(--ink);
+
+  color: var(--cream);
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.store-btn:hover {
+  background: var(--amber-deep);
+
+  transform: translateY(-2px);
+}
+
+.store-btn small {
+  display: block;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.store-btn strong {
+  display: block;
+
+  margin-top: 1px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.download-features {
+  margin-top: 36px;
+
+  padding-top: 26px;
+
+  border-top: 1px solid var(--line);
+}
+
+.download-feature {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 13px;
+}
+
+.download-feature span {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: rgba(244, 121, 30, 0.14);
+
+  color: var(--amber-deep);
+
+  font-size: 12px;
+}
+
+.download-feature p {
+  margin: 0;
+
+  color: var(--ink);
+
+  font-size: 16px;
+}
+
+
+/* =====================================================
+   VISUAL SIDE
+===================================================== */
+
+.download-visual {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 560px;
+}
+
+.download-circle {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.circle-one {
+  width: 340px;
+  height: 340px;
+
+  border: 1px solid rgba(244, 121, 30, 0.18);
+}
+
+.circle-two {
+  width: 500px;
+  height: 500px;
+
+  border: 1px solid var(--line);
+}
+
+
+/* =====================================================
+   PHONE MOCKUP
+===================================================== */
+
+.phone-mockup {
+  position: relative;
+
+  z-index: 3;
+
+  width: 272px;
+  height: 550px;
+
+  padding: 14px;
+
+  border-radius: 42px;
+
+  background:
+    linear-gradient(
+      160deg,
+      #17181c 0%,
+      #2b2117 55%,
+      #3d1e08 100%
+    );
+
+  box-shadow:
+    0 40px 90px rgba(23, 18, 10, 0.35);
+}
+
+.phone-notch {
+  position: absolute;
+
+  top: 14px;
+  left: 50%;
+
+  width: 90px;
+  height: 22px;
+
+  transform: translateX(-50%);
+
+  border-radius: 0 0 14px 14px;
+
+  background: #17181c;
+
+  z-index: 4;
+}
+
+.phone-screen {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 26px 16px 16px;
+
+  border-radius: 30px;
+
+  background: var(--cream);
+
+  overflow: hidden;
+}
+
+.phone-status-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  color: var(--ink);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.phone-map {
+  position: relative;
+
+  height: 240px;
+
+  margin-top: 14px;
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      160deg,
+      var(--panel) 0%,
+      var(--paper-deep) 100%
+    );
+
+  overflow: hidden;
+}
+
+.phone-map-pin {
+  position: absolute;
+
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50% 50% 50% 0;
+
+  background: var(--amber);
+
+  transform: rotate(-45deg);
+}
+
+.pin-a {
+  top: 40px;
+  left: 40px;
+}
+
+.pin-b {
+  bottom: 50px;
+  right: 45px;
+}
+
+.phone-map-route {
+  position: absolute;
+
+  top: 46px;
+  left: 46px;
+
+  width: 115px;
+  height: 115px;
+
+  border-bottom: 2px dashed rgba(23, 24, 28, 0.25);
+  border-right: 2px dashed rgba(23, 24, 28, 0.25);
+
+  border-radius: 0 0 40px 0;
+}
+
+.phone-card {
+  margin-top: 14px;
+
+  padding: 14px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 14px;
+
+  background: var(--cream);
+
+  box-shadow:
+    0 10px 24px rgba(20, 15, 5, 0.08);
+}
+
+.phone-car-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.phone-car-icon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 10px;
+
+  background: var(--panel);
+
+  font-size: 18px;
+}
+
+.phone-car-row strong {
+  display: block;
+
+  color: var(--ink);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+}
+
+.phone-car-row p {
+  margin: 2px 0 0;
+
+  color: var(--ink-soft);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 11px;
+}
+
+.phone-book-btn {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  height: 40px;
+
+  margin-top: 14px;
+
+  border-radius: 8px;
+
+  background: var(--amber);
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.download-back-button {
+  display: none;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  .download-hero {
+    gap: 20px;
+  }
+
+  .phone-mockup {
+    width: 240px;
+    height: 486px;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 800px) {
+
+  .download-page {
+    padding: 10px;
+  }
+
+  .download-hero {
+    grid-template-columns: 1fr;
+
+    min-height: auto;
+
+    padding: 28px 10px 10px;
+  }
+
+  .download-content {
+    max-width: 100%;
+
+    text-align: center;
+  }
+
+  .download-content > p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .store-buttons {
+    justify-content: center;
+  }
+
+  .download-feature {
+    text-align: left;
+  }
+
+  .download-visual {
+    order: -1;
+
+    min-height: 420px;
+  }
+
+  .circle-one,
+  .circle-two {
+    display: none;
+  }
+
+  .phone-mockup {
+    width: 220px;
+    height: 446px;
+  }
+
+  .download-back-button {
+    display: inline-flex;
+
+    margin: 24px auto 10px;
+
+    padding: 11px 20px;
+
+    border-radius: 5px;
+
+    background: var(--amber);
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .download-back-button:hover {
+    background: var(--amber-deep);
+
+    transform: translateY(-1px);
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 420px) {
+
+  .download-content h1 {
+    font-size: 30px;
+  }
+
+  .store-btn {
+    padding: 11px 16px;
+  }
+
+  .phone-mockup {
+    width: 190px;
+    height: 385px;
+  }
+
+  .phone-map {
+    height: 190px;
+  }
+}
+
+
+/* =====================================================
+   REDUCE MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .download-content {
+    animation: none;
+
+    opacity: 1;
+
+    transform: none;
+  }
+}
