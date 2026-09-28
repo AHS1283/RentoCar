@@ -45,10 +45,6 @@ import Refund from "./pages/Refund";
 ===================================================== */
 
 import CompanyProfile from "./pages/CompanyProfile";
-import Financials from "./pages/Financials";
-import SecFilings from "./pages/SecFilings";
-import NewsEvents from "./pages/NewsEvents";
-import Leadership from "./pages/Leadership";
 
 /* =====================================================
    HOMEPAGE SECTIONS
@@ -265,25 +261,10 @@ function AppContent() {
             element={<CompanyProfile />}
           />
 
-          <Route
-            path="/company-profile/financials"
-            element={<Financials />}
-          />
 
-          <Route
-            path="/company-profile/sec-filings"
-            element={<SecFilings />}
-          />
+          
 
-          <Route
-            path="/company-profile/news-events"
-            element={<NewsEvents />}
-          />
-
-          <Route
-            path="/company-profile/leadership"
-            element={<Leadership />}
-          />
+          
 
           {/* =================================================
               ADMIN LOGIN

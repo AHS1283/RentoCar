@@ -8,6 +8,52 @@ import "./Home.css";
 // ^ adjust this path if Home.css lives in a different folder
 //   than this component
 
+/* =========================================================
+   SEO CONFIG
+========================================================= */
+
+const SEO = {
+  title: "Self-Drive Car Rental in Pune | Rentocar",
+  description:
+    "Rent self-drive cars in Pune with Rentocar. Choose from Innova, Seltos, Creta, Thar, Nexon and Swift from ₹1,499/day. Book online in minutes.",
+  keywords:
+    "self drive car rental Pune, rent a car Pune, self drive cars, car rental Pune, Toyota Innova rental, Kia Seltos rental, Hyundai Creta rental, Mahindra Thar rental, Tata Nexon rental, Maruti Swift rental, Rentocar",
+  author: "Rentocar",
+  publisher: "Rentocar",
+  robots: "index, follow",
+  lang: "en",
+};
+
+// Creates or updates a <meta> tag in <head>
+function setMetaTag(attr, key, content) {
+  let element = document.head.querySelector(
+    `meta[${attr}="${key}"]`
+  );
+
+  if (!element) {
+    element = document.createElement("meta");
+    element.setAttribute(attr, key);
+    document.head.appendChild(element);
+  }
+
+  element.setAttribute("content", content);
+}
+
+// Creates or updates a <link> tag in <head>
+function setLinkTag(rel, href) {
+  let element = document.head.querySelector(
+    `link[rel="${rel}"]`
+  );
+
+  if (!element) {
+    element = document.createElement("link");
+    element.setAttribute("rel", rel);
+    document.head.appendChild(element);
+  }
+
+  element.setAttribute("href", href);
+}
+
 const cars = [
   {
     id: 1,
@@ -469,6 +515,56 @@ export default function Home() {
 
   const [carImages, setCarImages] =
     useState({});
+
+  /* =======================================================
+     SEO — title, description, keywords, canonical, robots,
+     author, publisher, lang, Open Graph and Twitter tags
+  ======================================================= */
+
+  useEffect(() => {
+    document.title = SEO.title;
+    document.documentElement.setAttribute(
+      "lang",
+      SEO.lang
+    );
+
+    const canonicalUrl =
+      window.location.origin + "/";
+
+    setMetaTag("name", "description", SEO.description);
+    setMetaTag("name", "keywords", SEO.keywords);
+    setMetaTag("name", "author", SEO.author);
+    setMetaTag("name", "publisher", SEO.publisher);
+    setMetaTag("name", "robots", SEO.robots);
+
+    setLinkTag("canonical", canonicalUrl);
+
+    // Open Graph
+    setMetaTag("property", "og:type", "website");
+    setMetaTag("property", "og:site_name", "Rentocar");
+    setMetaTag("property", "og:title", SEO.title);
+    setMetaTag(
+      "property",
+      "og:description",
+      SEO.description
+    );
+    setMetaTag("property", "og:url", canonicalUrl);
+    setMetaTag("property", "og:image", cars[0].image);
+
+    // Twitter
+    setMetaTag(
+      "name",
+      "twitter:card",
+      "summary_large_image"
+    );
+    setMetaTag("name", "twitter:title", SEO.title);
+    setMetaTag(
+      "name",
+      "twitter:description",
+      SEO.description
+    );
+    setMetaTag("name", "twitter:image", cars[0].image);
+  }, []);
 
   /* =======================================================
      LOAD CAR IMAGES FROM FIREBASE
@@ -953,8 +1049,13 @@ export default function Home() {
                   <div className="carousel-image-wrap">
                     <img
                       src={getCarImage(car)}
-                      alt={car.name}
+                      alt={`${car.name} ${car.type} self-drive rental in Pune`}
                       className="carousel-image"
+                      loading={
+                        position === 0
+                          ? "eager"
+                          : "lazy"
+                      }
                       onError={(event) => {
                         if (
                           event.currentTarget
@@ -1065,6 +1166,7 @@ export default function Home() {
                   )
                 }
                 disabled={locations.length <= 1}
+                aria-label="Pick-up location"
               >
                 {locations.map((location) => (
                   <option
@@ -1217,6 +1319,7 @@ export default function Home() {
                     event.target.value
                   )
                 }
+                aria-label="Car type"
               >
                 {carTypes.map((type) => (
                   <option
